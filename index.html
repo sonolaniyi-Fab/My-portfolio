@@ -301,6 +301,20 @@ html[data-theme="dark"] .rocker .face{box-shadow:inset 0 -12px 13px -9px rgba(0,
 .wafloat{position:fixed;right:18px;bottom:18px;z-index:80;background:#25D366;color:#fff;border:2px solid var(--hard);border-radius:999px;padding:12px 18px;font-family:var(--mono);font-size:12.5px;font-weight:700;box-shadow:4px 4px 0 var(--hard)}
 .wafloat:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--hard)}
 
+.spotsite{max-width:980px;margin:30px auto 0}
+.spotscreen{height:560px;overflow-y:auto;overflow-x:hidden;background:#EAE0F5;scrollbar-width:thin}
+.spotscreen img{width:100%;display:block}
+.funnels-h{font-family:var(--disp);font-size:22px;margin:54px 0 0;text-transform:uppercase;letter-spacing:-.01em}
+.mads{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:34px 0 0}
+.madc{background:var(--panel);border:2px solid var(--hard);border-radius:16px;padding:24px}
+.madc h3{font-family:var(--disp);font-size:19px;margin:12px 0 10px}
+.madc ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.madc li{font-size:14px;padding-left:22px;position:relative}
+.madc li::before{content:"✓";position:absolute;left:0;color:var(--ember);font-weight:700}
+.madc.dark{background:var(--ink);color:var(--paper);box-shadow:8px 8px 0 var(--ember)}
+.madc.dark p{color:var(--paper);opacity:.85;font-size:14px;margin:0 0 10px}
+@media(max-width:760px){.mads{grid-template-columns:1fr}.spotscreen{height:420px}}
+
 /* CONTACT */
 .contact{margin:80px 0 0}
 .cinner{border:3px solid var(--hard);border-radius:24px;background:var(--ember);color:#fff;padding:56px 30px;text-align:center;box-shadow:10px 10px 0 var(--hard);position:relative;overflow:hidden}
@@ -327,7 +341,7 @@ footer{padding:34px 0 46px;font-family:var(--mono);font-size:12px;color:var(--mu
 <nav><div class="wrap nav-in">
   <a href="#top" class="brand">olaniyi<b>.</b>builds()</a>
   <div class="nav-links">
-    <a href="#services">Services</a><a href="#try">Work</a><a href="#pricing">Pricing</a><a href="#process">Process</a><a href="#faq">FAQ</a>
+    <a href="#services">Services</a><a href="#meta">Meta ads</a><a href="#try">Work</a><a href="#pricing">Pricing</a><a href="#process">Process</a><a href="#faq">FAQ</a>
     <a href="#contact" class="nav-cta">Start a project</a>
     <div class="mini" onclick="toggleTheme()" role="button" aria-label="Toggle theme"><i></i></div>
   </div>
@@ -372,11 +386,11 @@ footer{padding:34px 0 46px;font-family:var(--mono);font-size:12px;color:var(--mu
   <h2 class="reveal">One person. Design, code and customers.</h2>
   <p class="sub reveal">Most agencies hand you a nice-looking site and walk away. I've spent years running paid ads for online stores, where a page either makes money or gets switched off. That is the standard I build to.</p>
   <div class="svc">
+    <div class="svcc reveal"><span class="tag ember">Meta ads</span><h3>Facebook and Instagram ads</h3><p>A site with no visitors earns nothing. I set up and run Meta ads for online stores, built around cost per order and your profit margin, not clicks and likes.</p><ul><li>Business Manager, pixel and Conversions API set up properly</li><li>Campaigns, creatives and audiences</li><li>Reporting you can read</li></ul></div>
     <div class="svcc reveal"><span class="tag ember">Websites</span><h3>Business websites</h3><p>A fast, mobile-first site that makes you look established and makes it easy to contact you. Great for clinics, schools, dealers, restaurants and consultants.</p><ul><li>Works on cheap phones and slow data</li><li>WhatsApp, call and map buttons</li><li>Found on Google</li></ul></div>
     <div class="svcc reveal"><span class="tag cobalt">Online stores</span><h3>E-commerce</h3><p>A store that takes orders and payments without you chasing screenshots on WhatsApp. I built and run my own, so I know what converts.</p><ul><li>Cart, checkout, cash on delivery or card</li><li>Product pages built to sell</li><li>Pixel and tracking set up</li></ul></div>
     <div class="svcc reveal"><span class="tag ember">Mobile apps</span><h3>Android and iOS apps</h3><p>Custom apps with sign-in, maps, live data and push notifications. Àjàlá, below, is a full app I designed and built alone.</p><ul><li>React Native, one codebase for both</li><li>Database, login and backend included</li><li>Published to Play Store and App Store</li></ul></div>
     <div class="svcc reveal"><span class="tag cobalt">Booking and tools</span><h3>Custom systems</h3><p>Booking pages, dashboards, order trackers and automations that replace spreadsheets and endless chat threads.</p><ul><li>Online booking with deposits</li><li>Admin dashboard you control</li><li>Automations with n8n and Make</li></ul></div>
-    <div class="svcc reveal"><span class="tag ember">Growth</span><h3>Ads that send buyers</h3><p>A site with no visitors earns nothing. I run Meta and Google ads for the things I build, tied to cost per order.</p><ul><li>Meta and Google campaigns</li><li>Landing pages and funnels</li><li>Reporting you can read</li></ul></div>
     <div class="svcc reveal"><span class="tag cobalt">After launch</span><h3>Care and fixes</h3><p>I don't disappear after launch. Updates, hosting help, fixes and small changes, so your site keeps working.</p><ul><li>Hosting and domain help</li><li>Monthly care plan, optional</li><li>Training so you can edit it</li></ul></div>
   </div>
 </div></section>
@@ -441,9 +455,16 @@ footer{padding:34px 0 46px;font-family:var(--mono);font-size:12px;color:var(--mu
 </div></section>
 
 <section class="sec"><div class="wrap">
-  <div class="sec-h reveal"><span class="num">04</span><span class="eyebrow">My brand · growth</span></div>
-  <h2 class="reveal">Spotshop NG, I design the funnel and run the ads.</h2>
-  <p class="sub reveal">My own e-commerce brand. I design the product funnels and run the paid acquisition behind them: 100+ Meta &amp; Google campaigns, 1,000+ orders for one product in three months, cost per order kept well below margin.</p>
+  <div class="sec-h reveal"><span class="num">04</span><span class="eyebrow">My own store · live</span></div>
+  <h2 class="reveal">Spotshop NG: my store, my funnels, my ads.</h2>
+  <p class="sub reveal">A registered Nigerian e-commerce business that I built and run. New, used and car listings, partner shops, pay on delivery in Lagos, Paystack or bank transfer elsewhere, and every order confirmed on WhatsApp. Behind it I design the product funnels and run the paid acquisition: 100+ Meta &amp; Google campaigns, 1,000+ orders for one product in three months, cost per order kept well below margin.</p>
+  <div class="spotsite reveal">
+    <div class="browser"><div class="bbar"><i class="r"></i><i class="y"></i><i class="g"></i><span class="u">spotshop.org</span></div>
+      <div class="spotscreen"><img src="img/spot_site_full.png" alt="Spotshop.org homepage" loading="lazy"></div></div>
+    <div class="links" style="justify-content:center;margin-top:18px;display:flex;gap:11px;flex-wrap:wrap"><a href="https://spotshop.org" target="_blank" rel="noopener" class="btn fill cobalt">Visit spotshop.org →</a></div>
+    <p class="ptip" style="max-width:560px">Scroll inside the frame to see the storefront. It is the live site, captured as a visitor.</p>
+  </div>
+  <h3 class="funnels-h reveal">The product funnels behind the ads</h3>
   <div class="fwrap">
     <div class="reveal">
       <div class="phone"><div class="pscreen"><div class="pscroll" id="spotscroll"><img id="spotimg" alt="Spotshop product funnel"></div></div></div>
@@ -500,8 +521,23 @@ footer{padding:34px 0 46px;font-family:var(--mono);font-size:12px;color:var(--mu
   </div>
 </div></section>
 
+<section class="sec" id="meta"><div class="wrap">
+  <div class="sec-h reveal"><span class="num">07</span><span class="eyebrow">Meta ads, Facebook and Instagram</span></div>
+  <h2 class="reveal">Ads that are set up to be measured, then to make money.</h2>
+  <p class="sub reveal">Most ad accounts waste money because tracking is wrong before the first naira is spent. I fix the foundation first, then build campaigns around what an order is worth to you.</p>
+  <div class="mads">
+    <div class="madc reveal"><span class="tag ember">The setup</span><h3>What I put in place</h3>
+      <ul><li>Meta Business Suite and Business Manager, with access given to me as a partner, never your password</li><li>Ad account, page, Instagram account and payment method connected</li><li>Meta pixel and Conversions API (CAPI) installed, with purchases counted once and with the right value</li><li>Domain verification and event priority</li><li>Product catalogue, if you sell products</li><li>Tracking tested end to end before launch</li></ul></div>
+    <div class="madc reveal"><span class="tag cobalt">The campaigns</span><h3>How I run them</h3>
+      <ul><li>Campaign structure (CBO and Advantage+) matched to your product and budget</li><li>Audiences, placements, ad copy and creative testing</li><li>I work out your break-even cost per order before launch</li><li>Weekly optimisation and a short report you can read</li><li>You keep ownership of every account and pay Meta directly</li></ul></div>
+  </div>
+  <div class="madc dark reveal" style="margin-top:18px"><b style="font-family:var(--disp);font-size:18px">Real results from my own accounts</b>
+    <p style="margin-top:8px">100+ Meta and Google campaigns, 1,000+ orders on a single product in three months, and purchases at roughly ₦411 to ₦887 each at the top end. You can see the Ads Manager view above in the "Real campaigns, real purchases" section.</p>
+    <a href="#contact" class="btn" style="margin-top:6px">Get your ads audited →</a></div>
+</div></section>
+
 <section class="sec" id="pricing"><div class="wrap">
-  <div class="sec-h reveal"><span class="num">07</span><span class="eyebrow">Pricing</span></div>
+  <div class="sec-h reveal"><span class="num">08</span><span class="eyebrow">Pricing</span></div>
   <h2 class="reveal">Clear prices. No surprises.</h2>
   <p class="sub reveal">Every project gets a fixed quote after a free call, so you know the cost before we start. These are starting points.</p>
   <div class="price">
@@ -512,11 +548,11 @@ footer{padding:34px 0 46px;font-family:var(--mono);font-size:12px;color:var(--mu
     <div class="pc reveal"><h3>Custom app</h3><div class="amt">from ₦1,500,000</div><p class="for">For startups and companies that need their own app.</p>
       <ul class="pf"><li>Android and iOS from one codebase</li><li>Login, database, maps and push</li><li>Admin dashboard</li><li>Store submission handled</li><li>Built in clear stages with demos</li><li>Scoped after a free call</li></ul><a href="#contact" class="btn">Book a call</a></div>
   </div>
-  <p class="pnote reveal">Prices in Nigerian Naira. Foreign clients are quoted in USD. 50% to start, 50% on delivery. Monthly care plans are optional.</p>
+  <p class="pnote reveal"><b>Meta ads:</b> tracking and account setup from ₦120,000, and managed campaigns from ₦150,000 a month, plus your ad spend paid directly to Meta.<br>Prices in Nigerian Naira. Foreign clients are quoted in USD. 50% to start, 50% on delivery. Monthly care plans are optional.</p>
 </div></section>
 
 <section class="sec" id="process"><div class="wrap">
-  <div class="sec-h reveal"><span class="num">08</span><span class="eyebrow">How it works</span></div>
+  <div class="sec-h reveal"><span class="num">09</span><span class="eyebrow">How it works</span></div>
   <h2 class="reveal">From first message to live in four steps.</h2>
   <div class="steps reveal">
     <div class="stp"><span class="no">STEP 01</span><h3>Free call</h3><p>You tell me what the business needs. I ask the questions that matter and give you an honest answer, even if that is "you don't need an app".</p></div>
@@ -527,7 +563,7 @@ footer{padding:34px 0 46px;font-family:var(--mono);font-size:12px;color:var(--mu
 </div></section>
 
 <section class="sec" id="faq"><div class="wrap">
-  <div class="sec-h reveal"><span class="num">09</span><span class="eyebrow">Questions</span></div>
+  <div class="sec-h reveal"><span class="num">10</span><span class="eyebrow">Questions</span></div>
   <h2 class="reveal">Things clients ask me first.</h2>
   <div class="faq reveal">
     <details><summary>How long does a website take?</summary><p>A starter site is usually 1 to 2 weeks. A store or booking system takes 2 to 4 weeks. I give you a date in the quote.</p></details>
