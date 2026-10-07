@@ -13,7 +13,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23FF5A2C'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='700' font-size='34' text-anchor='middle' fill='white'%3EF%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"></noscript>
 <style>
 :root{
   --ember:#FF5A2C; --cobalt:#2C45FF;
@@ -398,7 +398,7 @@ html[data-theme="dark"] .l-chip{background:rgba(30,26,36,.86);color:#F2ECE0;box-
 .layer.dragging{cursor:grabbing}
 .draghint{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);display:flex;gap:10px;align-items:center;margin-top:-4px}
 .draghint button{font:inherit;color:var(--ember);background:none;border:0;border-bottom:1px dashed currentColor;cursor:pointer;padding:0}
-@media(pointer:coarse){.draghint{display:none}}
+.draghint .h-touch{display:none}@media(pointer:coarse){.draghint .h-mouse{display:none}.draghint .h-touch{display:inline}}
 /* calmer default arrangement so nothing starts hidden */
 @media(min-width:901px){
   .l-browser{left:-24px;top:70px;width:400px}
@@ -473,6 +473,40 @@ html,body{max-width:100%;overflow-x:hidden}
   .l-me{transform:translateZ(80px)}
   .stage-in{--rx:0deg}
 }
+
+/* phones: a flat, non-overlapping arrangement (nothing hides behind the big panel) */
+@media(max-width:900px){
+  .stage{height:436px;width:min(360px,calc(100vw - 32px));margin:0 auto}
+  .stage .layer{animation-duration:9s}
+  .stage .l-browser{left:0;top:84px;width:212px;transform:none}
+  .stage .l-phone{right:0;top:0;transform:none}
+  .stage .l-phone .ph{width:136px}
+  .stage .c3{left:0;top:6px;transform:none}
+  .stage .c1{left:0;top:262px;bottom:auto;transform:none}
+  .stage .c2{right:0;top:318px;bottom:auto;transform:none}
+  .stage .l-me{left:0;top:344px;bottom:auto;width:84px;height:84px;transform:none}
+  .stage .orb{display:none}
+}
+
+/* wall switch, drawn like a real Nigerian 1-gang plate: cream square plate, inset bezel, screws, big rocker */
+.sw{width:118px;height:118px;border-radius:12px;background:#f5efe3;border:2.5px solid #2a1f1c;box-shadow:5px 6px 0 rgba(42,31,28,.92);perspective:620px}
+.sw::before{width:80px;height:98px;border-radius:7px;background:linear-gradient(180deg,#e7dfcf,#ddd4c2);border:2px solid #2a1f1c;box-shadow:inset 0 2px 5px rgba(0,0,0,.28)}
+.sw .rocker{width:64px;height:84px}
+.sw .rocker::before{border-radius:5px;background:#d6cdbb;border:2px solid #2a1f1c;transform:translateZ(-10px)}
+.sw .rocker .face{border-radius:5px;background:#fffdf8;border:2.5px solid #2a1f1c}
+.sw .rocker .face::after{content:"";position:absolute;left:10px;right:10px;top:50%;height:2px;border-radius:1px;background:rgba(42,31,28,.18)}
+.sw .screw{position:absolute;left:50%;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:#ebe3d2;border:1.5px solid #2a1f1c}
+.sw .screw::after{content:"";position:absolute;left:1px;right:1px;top:50%;height:1.5px;margin-top:-.75px;background:#2a1f1c;transform:rotate(35deg)}
+.sw .screw.t{top:5px}.sw .screw.b{bottom:5px}
+.sw .finger{position:absolute;right:-26px;bottom:-34px;width:40px;height:70px;pointer-events:none;transform:translate(16px,26px) rotate(-18deg);transition:transform .22s cubic-bezier(.3,1.5,.5,1);opacity:0}
+.sw:hover .finger,.sw:focus-visible .finger{opacity:1;transform:translate(0,4px) rotate(-18deg)}
+.sw:active .finger{transform:translate(-4px,-6px) rotate(-18deg)}
+@media(pointer:coarse){.sw .finger{display:none}}
+@media(min-width:901px){
+  .l-me{left:28px;bottom:6px}
+  .draghint{margin-top:10px}
+  .switchbox{margin-top:6px}
+}
 </style>
 </head>
 <body>
@@ -509,10 +543,10 @@ html,body{max-width:100%;overflow-x:hidden}
         <div class="layer l-me"><img data-img="headshot" alt="Femi Olaniyi, web and app developer in Lagos"></div>
       </div>
     </div>
-    <div class="draghint"><span>drag the cards to rearrange</span><button type="button" id="resetLayers">reset</button></div>
+    <div class="draghint"><span class="h-mouse">drag the cards to rearrange</span><span class="h-touch">press and hold a card, then drag</span><button type="button" id="resetLayers">reset</button></div>
     <div class="switchbox">
       <div class="sw" id="wall" onclick="toggleTheme()" role="button" aria-label="Light switch: toggle light and dark" tabindex="0">
-        <div class="rocker"><div class="face"></div></div>
+        <i class="screw t"></i><i class="screw b"></i><div class="rocker"><div class="face"></div></div><span class="finger" aria-hidden="true"><svg viewBox="0 0 40 70" width="40" height="70"><path d="M8 70 V30 C8 14 12 4 20 4 C28 4 32 14 32 30 V70 Z" fill="#f7b3bd" stroke="#2a1f1c" stroke-width="2.5" stroke-linejoin="round"/><path d="M14 22 C15 17 18 14 21 14" fill="none" stroke="#2a1f1c" stroke-width="2" stroke-linecap="round"/></svg></span>
       </div>
       <span class="cap">the lights</span>
     </div>
@@ -656,7 +690,7 @@ html,body{max-width:100%;overflow-x:hidden}
   <p class="sub reveal">A registered Nigerian e-commerce business that I built and run. New, used and car listings, partner shops, pay on delivery in Lagos, Paystack or bank transfer elsewhere, and every order confirmed on WhatsApp. Behind it I design the product funnels and run the paid acquisition: 100+ Meta &amp; Google campaigns, 1,000+ orders for one product in three months, cost per order kept well below margin.</p>
   <div class="spotsite reveal">
     <div class="browser"><div class="bbar"><i class="r"></i><i class="y"></i><i class="g"></i><span class="u">spotshop.org</span></div>
-      <div class="spotscreen"><img src="img/spot_site_full.png" alt="Spotshop.org homepage" loading="lazy"></div></div>
+      <div class="spotscreen"><img src="img/spot_site_full.webp" alt="Spotshop.org homepage" loading="lazy"></div></div>
     <div class="links" style="justify-content:center;margin-top:18px;display:flex;gap:11px;flex-wrap:wrap"><a href="https://spotshop.org" target="_blank" rel="noopener" class="btn fill cobalt">Visit spotshop.org →</a></div>
     <p class="ptip" style="max-width:560px">Scroll inside the frame to see the storefront. It is the live site, captured as a visitor.</p>
   </div>
@@ -794,8 +828,8 @@ html,body{max-width:100%;overflow-x:hidden}
 <footer><div class="wrap foot-in"><span>© <span id="yr"></span> Oluwafemi Abraham Olaniyi</span><span>Designed and built by me · Lagos, Nigeria</span></div></footer>
 
 <script>
-var IMG={"onboarding":"img/onboarding.jpg","home":"img/app_home.jpg","searchfilled":"img/searchfilled.jpg","roadintel":"img/roadintel.jpg","report":"img/report.jpg","submit":"img/submit.jpg","guardian":"img/guardian.jpg","route_danfo":"img/route_danfo.jpg","route_brt":"img/route_brt.jpg","route_ferry":"img/route_ferry.jpg","headshot":"img/headshot.jpg","webdesk":"img/web_desk.jpg","webmob":"img/web_mob_clean.jpg","ar_home":"img/ar_home.jpg","ar_shop":"img/ar_shop.jpg","ar_product":"img/ar_product.jpg","ar_cart":"img/ar_cart.jpg","ar_checkout":"img/ar_checkout.jpg","spot_blender":"img/spot_blender.jpg","spot_dryer":"img/spot_dryer.jpg","ar_m_home":"img/ar_m_home.jpg","ar_m_shop":"img/ar_m_shop.jpg","ar_m_product":"img/ar_m_product.jpg","ar_m_checkout":"img/ar_m_checkout.jpg","ar_m_menu":"img/ar_m_menu.jpg","spot_confirm":"img/spot_confirm.jpg","app_home":"img/app_home.jpg","app_planner":"img/app_planner.jpg","app_brief":"img/app_brief.jpg","app_journey":"img/app_journey.jpg","app_grid":"img/app_grid.jpg","app_report":"img/app_report.jpg","app_done":"img/app_done.jpg"};
-document.querySelectorAll('[data-img]').forEach(function(el){el.src=IMG[el.dataset.img];});
+var IMG={"onboarding":"img/onboarding.webp","home":"img/app_home.webp","searchfilled":"img/searchfilled.webp","roadintel":"img/roadintel.webp","report":"img/report.webp","submit":"img/submit.webp","guardian":"img/guardian.webp","route_danfo":"img/route_danfo.webp","route_brt":"img/route_brt.webp","route_ferry":"img/route_ferry.webp","headshot":"img/headshot.webp","webdesk":"img/web_desk.webp","webmob":"img/web_mob_clean.webp","ar_home":"img/ar_home.webp","ar_shop":"img/ar_shop.webp","ar_product":"img/ar_product.webp","ar_cart":"img/ar_cart.webp","ar_checkout":"img/ar_checkout.webp","spot_blender":"img/spot_blender.webp","spot_dryer":"img/spot_dryer.webp","ar_m_home":"img/ar_m_home.webp","ar_m_shop":"img/ar_m_shop.webp","ar_m_product":"img/ar_m_product.webp","ar_m_checkout":"img/ar_m_checkout.webp","ar_m_menu":"img/ar_m_menu.webp","spot_confirm":"img/spot_confirm.webp","app_home":"img/app_home.webp","app_planner":"img/app_planner.webp","app_brief":"img/app_brief.webp","app_journey":"img/app_journey.webp","app_grid":"img/app_grid.webp","app_report":"img/app_report.webp","app_done":"img/app_done.webp"};
+document.querySelectorAll('[data-img]').forEach(function(el){if(el.closest('.stage')){el.setAttribute('fetchpriority','high');el.decoding='async';}else{el.loading='lazy';el.decoding='async';}el.src=IMG[el.dataset.img];});
 document.getElementById('yr').textContent=new Date().getFullYear();
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -944,7 +978,7 @@ fbRender();
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fine = matchMedia('(pointer:fine)').matches;
   var cores = navigator.hardwareConcurrency || 4, mem = navigator.deviceMemory || 4;
-  if (cores <= 4 || mem <= 2) document.documentElement.classList.add('lite');
+  if (cores <= 4 || mem <= 2 || matchMedia('(pointer:coarse)').matches) document.documentElement.classList.add('lite');
 
   /* progress bar */
   var prog = document.getElementById('prog');
@@ -974,54 +1008,68 @@ fbRender();
     }, {passive:true});
   }
 
-  /* hero cards can be dragged apart (mouse and pen; phones keep the static layout so the page still scrolls) */
+  /* hero cards can be dragged apart: mouse/pen drag at once, touch drags after a short press so scrolling still works */
   (function(){
-    if (!fine || !stage) return;
+    if (!stage) return;
     var layers = Array.prototype.slice.call(stage.querySelectorAll('.layer'));
-    var PERSP = 1300, top = 0, drag = null;
-    function tzOf(m){ var v = m.match(/matrix3d\(([^)]+)\)/); return v ? parseFloat(v[1].split(',')[14]) || 0 : 0; }
+    var PERSP = 1300, top = 0, cur = null;
+    function tzOf(m){ var v = m.match(/matrix3d(([^)]+))/); return v ? parseFloat(v[1].split(',')[14]) || 0 : 0; }
+    function begin(el, x, y){
+      if (!el._home) {
+        el._home = { style: el.getAttribute('style') || '' };
+        el._base = getComputedStyle(el).transform;
+        if (el._base === 'none') el._base = '';
+        el._tz = tzOf(el._base);
+        var l = el.offsetLeft, t = el.offsetTop;
+        el.style.left = l + 'px'; el.style.top = t + 'px'; el.style.right = 'auto'; el.style.bottom = 'auto';
+      }
+      top += 1;
+      var lift = 320 + top * 8, z = el._tz + lift;
+      var s = Math.max(.3, (PERSP - z) / (PERSP - el._tz));
+      el.style.transform = 'translateZ(' + lift + 'px) scale(' + s.toFixed(4) + ') ' + el._base;
+      el.classList.add('dragging');
+      cur = { el: el, x: x, y: y, l: parseFloat(el.style.left), t: parseFloat(el.style.top) };
+    }
+    function move(x, y){
+      if (!cur) return;
+      var sr = stage.getBoundingClientRect(), el = cur.el;
+      el.style.left = Math.max(-40, Math.min(sr.width - 40, cur.l + (x - cur.x))) + 'px';
+      el.style.top = Math.max(-30, Math.min(sr.height - 30, cur.t + (y - cur.y))) + 'px';
+    }
+    function finish(){ if (cur) { cur.el.classList.remove('dragging'); cur = null; } }
+
     layers.forEach(function(el){
       el.classList.add('grabbable');
       el.addEventListener('dragstart', function(e){ e.preventDefault(); });
-      el.addEventListener('pointerdown', function(e){
-        if (e.button > 0) return;
-        if (!el._home) {
-          el._home = { style: el.getAttribute('style') || '' };
-          el._base = getComputedStyle(el).transform;
-          el._tz = tzOf(el._base);
-          var l = el.offsetLeft, t = el.offsetTop;
-          el.style.left = l + 'px'; el.style.top = t + 'px'; el.style.right = 'auto'; el.style.bottom = 'auto';
-        }
-        top += 1;
-        var lift = 320 + top * 8, z = el._tz + lift;
-        var s = Math.max(.3, (PERSP - z) / (PERSP - el._tz));
-        el.style.transform = 'translateZ(' + lift + 'px) scale(' + s.toFixed(4) + ') ' + el._base;
-        el.classList.add('dragging');
-        drag = { el: el, x: e.clientX, y: e.clientY, l: parseFloat(el.style.left), t: parseFloat(el.style.top), id: e.pointerId };
-        try { el.setPointerCapture(e.pointerId); } catch (err) {}
-        e.preventDefault();
-      });
-      el.addEventListener('pointermove', function(e){
-        if (!drag || drag.el !== el || e.pointerId !== drag.id) return;
-        var sr = stage.getBoundingClientRect();
-        var nl = drag.l + (e.clientX - drag.x), nt = drag.t + (e.clientY - drag.y);
-        el.style.left = Math.max(-80, Math.min(sr.width - 40, nl)) + 'px';
-        el.style.top = Math.max(-40, Math.min(sr.height - 30, nt)) + 'px';
-      });
-      function end(e){
-        if (!drag || drag.el !== el) return;
-        el.classList.remove('dragging'); drag = null;
-        try { el.releasePointerCapture(e.pointerId); } catch (err) {}
+      if (fine) {
+        el.addEventListener('pointerdown', function(e){
+          if (e.button > 0 || e.pointerType === 'touch') return;
+          begin(el, e.clientX, e.clientY);
+          try { el.setPointerCapture(e.pointerId); } catch (err) {}
+          e.preventDefault();
+        });
+        el.addEventListener('pointermove', function(e){ if (cur && cur.el === el && e.pointerType !== 'touch') move(e.clientX, e.clientY); });
+        el.addEventListener('pointerup', function(e){ if (e.pointerType !== 'touch') finish(); });
+        el.addEventListener('pointercancel', finish);
       }
-      el.addEventListener('pointerup', end);
-      el.addEventListener('pointercancel', end);
+      /* touch: hold still for a moment to pick a card up, then drag; moving sooner just scrolls the page */
+      var timer = null, sx = 0, sy = 0, armed = false;
+      el.addEventListener('touchstart', function(e){
+        var t = e.touches[0]; sx = t.clientX; sy = t.clientY; armed = false;
+        clearTimeout(timer);
+        timer = setTimeout(function(){ armed = true; begin(el, sx, sy); if (navigator.vibrate) navigator.vibrate(12); }, 220);
+      }, {passive:true});
+      el.addEventListener('touchmove', function(e){
+        var t = e.touches[0];
+        if (!armed) { if (Math.abs(t.clientX - sx) > 8 || Math.abs(t.clientY - sy) > 8) clearTimeout(timer); return; }
+        e.preventDefault(); move(t.clientX, t.clientY);
+      }, {passive:false});
+      function tend(){ clearTimeout(timer); armed = false; finish(); }
+      el.addEventListener('touchend', tend); el.addEventListener('touchcancel', tend);
     });
     var reset = document.getElementById('resetLayers');
     if (reset) reset.addEventListener('click', function(){
-      layers.forEach(function(el){
-        if (!el._home) return;
-        el.setAttribute('style', el._home.style); el._home = null;
-      });
+      layers.forEach(function(el){ if (!el._home) return; el.setAttribute('style', el._home.style); el._home = null; });
       top = 0;
     });
   })();
@@ -1108,7 +1156,8 @@ fbRender();
       }, 1200);
     }
   }
-  if (document.readyState === 'complete') startGsap(); else addEventListener('load', startGsap);
+  /* start as soon as the DOM and deferred scripts are ready; waiting for the load event held the hero hidden until every image arrived */
+  if (document.readyState !== 'loading') startGsap(); else document.addEventListener('DOMContentLoaded', startGsap);
 })();
 </script>
 </body>
