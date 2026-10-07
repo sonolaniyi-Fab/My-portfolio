@@ -392,6 +392,23 @@ html[data-theme="dark"] .l-chip{background:rgba(30,26,36,.86);color:#F2ECE0;box-
 .ph-notch{position:absolute;top:8px;left:50%;translate:-50% 0;width:70px;height:18px;background:#161318;border-radius:12px;z-index:2}
 @media(max-width:900px){.stage{height:440px;width:min(400px,94vw)}.l-browser{width:300px;top:70px}.ph{width:170px;border-width:6px;border-radius:30px}.l-me{width:84px;height:84px;left:96px}.l-chip b{font-size:22px}.c3{left:54px}}
 
+/* draggable hero cards */
+.layer.grabbable{cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
+.layer.grabbable img{-webkit-user-drag:none;pointer-events:none}
+.layer.dragging{cursor:grabbing}
+.draghint{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);display:flex;gap:10px;align-items:center;margin-top:-4px}
+.draghint button{font:inherit;color:var(--ember);background:none;border:0;border-bottom:1px dashed currentColor;cursor:pointer;padding:0}
+@media(pointer:coarse){.draghint{display:none}}
+/* calmer default arrangement so nothing starts hidden */
+@media(min-width:901px){
+  .l-browser{left:-24px;top:70px;width:400px}
+  .l-phone{right:0;top:10px}
+  .c1{left:-6px;bottom:150px}
+  .c2{right:-10px;bottom:30px}
+  .c3{left:70px;top:0}
+  .l-me{left:150px;bottom:-14px}
+}
+
 /* scroll reveal with depth */
 html.gs .reveal{transition:none}
 .sec h2{transform-style:preserve-3d}
@@ -492,6 +509,7 @@ html,body{max-width:100%;overflow-x:hidden}
         <div class="layer l-me"><img data-img="headshot" alt="Femi Olaniyi, web and app developer in Lagos"></div>
       </div>
     </div>
+    <div class="draghint"><span>drag the cards to rearrange</span><button type="button" id="resetLayers">reset</button></div>
     <div class="switchbox">
       <div class="sw" id="wall" onclick="toggleTheme()" role="button" aria-label="Light switch: toggle light and dark" tabindex="0">
         <div class="rocker"><div class="face"></div></div>
@@ -776,7 +794,7 @@ html,body{max-width:100%;overflow-x:hidden}
 <footer><div class="wrap foot-in"><span>© <span id="yr"></span> Oluwafemi Abraham Olaniyi</span><span>Designed and built by me · Lagos, Nigeria</span></div></footer>
 
 <script>
-var IMG={"onboarding":"img/onboarding.jpg","home":"img/app_home.jpg","searchfilled":"img/searchfilled.jpg","roadintel":"img/roadintel.jpg","report":"img/report.jpg","submit":"img/submit.jpg","guardian":"img/guardian.jpg","route_danfo":"img/route_danfo.jpg","route_brt":"img/route_brt.jpg","route_ferry":"img/route_ferry.jpg","headshot":"img/headshot.jpg","webdesk":"img/web_desk.jpg","webmob":"img/web_mob_clean.jpg","ar_home":"img/ar_home.jpg","ar_shop":"img/ar_shop.jpg","ar_product":"img/ar_product.jpg","ar_cart":"img/ar_cart.jpg","ar_checkout":"img/ar_checkout.jpg","spot_styler":"img/spot_styler.jpg","spot_dryer":"img/spot_dryer.jpg","ar_m_home":"img/ar_m_home.jpg","ar_m_shop":"img/ar_m_shop.jpg","ar_m_product":"img/ar_m_product.jpg","ar_m_checkout":"img/ar_m_checkout.jpg","ar_m_menu":"img/ar_m_menu.jpg","spot_confirm":"img/spot_confirm.jpg","app_home":"img/app_home.jpg","app_planner":"img/app_planner.jpg","app_brief":"img/app_brief.jpg","app_journey":"img/app_journey.jpg","app_grid":"img/app_grid.jpg","app_report":"img/app_report.jpg","app_done":"img/app_done.jpg"};
+var IMG={"onboarding":"img/onboarding.jpg","home":"img/app_home.jpg","searchfilled":"img/searchfilled.jpg","roadintel":"img/roadintel.jpg","report":"img/report.jpg","submit":"img/submit.jpg","guardian":"img/guardian.jpg","route_danfo":"img/route_danfo.jpg","route_brt":"img/route_brt.jpg","route_ferry":"img/route_ferry.jpg","headshot":"img/headshot.jpg","webdesk":"img/web_desk.jpg","webmob":"img/web_mob_clean.jpg","ar_home":"img/ar_home.jpg","ar_shop":"img/ar_shop.jpg","ar_product":"img/ar_product.jpg","ar_cart":"img/ar_cart.jpg","ar_checkout":"img/ar_checkout.jpg","spot_blender":"img/spot_blender.jpg","spot_dryer":"img/spot_dryer.jpg","ar_m_home":"img/ar_m_home.jpg","ar_m_shop":"img/ar_m_shop.jpg","ar_m_product":"img/ar_m_product.jpg","ar_m_checkout":"img/ar_m_checkout.jpg","ar_m_menu":"img/ar_m_menu.jpg","spot_confirm":"img/spot_confirm.jpg","app_home":"img/app_home.jpg","app_planner":"img/app_planner.jpg","app_brief":"img/app_brief.jpg","app_journey":"img/app_journey.jpg","app_grid":"img/app_grid.jpg","app_report":"img/app_report.jpg","app_done":"img/app_done.jpg"};
 document.querySelectorAll('[data-img]').forEach(function(el){el.src=IMG[el.dataset.img];});
 document.getElementById('yr').textContent=new Date().getFullYear();
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -858,7 +876,7 @@ armShow(0);
  s.addEventListener('touchend',function(e){if(!on)return;on=false;var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy))armShow(armi+(dx<0?1:-1));});})();
 
 /* ---- SPOTSHOP FUNNEL PHONE ---- */
-var SP=[['spot_styler','5-in-1 Hair Styler'],['spot_dryer','Foldable Clothes Dryer'],['spot_confirm','Order confirmation']];
+var SP=[['spot_blender','Rechargeable Blender'],['spot_dryer','Foldable Clothes Dryer'],['spot_confirm','Order confirmation']];
 var spi=0;
 function spShow(i){spi=(i+SP.length)%SP.length;document.getElementById('spotimg').src=IMG[SP[spi][0]];document.getElementById('spotnow').textContent=SP[spi][1]+'  ·  '+(spi+1)+'/'+SP.length;document.getElementById('spotscroll').scrollTop=0;}
 function spotNext(){spShow(spi+1);} function spotPrev(){spShow(spi-1);}
@@ -955,6 +973,58 @@ fbRender();
       kick();
     }, {passive:true});
   }
+
+  /* hero cards can be dragged apart (mouse and pen; phones keep the static layout so the page still scrolls) */
+  (function(){
+    if (!fine || !stage) return;
+    var layers = Array.prototype.slice.call(stage.querySelectorAll('.layer'));
+    var PERSP = 1300, top = 0, drag = null;
+    function tzOf(m){ var v = m.match(/matrix3d\(([^)]+)\)/); return v ? parseFloat(v[1].split(',')[14]) || 0 : 0; }
+    layers.forEach(function(el){
+      el.classList.add('grabbable');
+      el.addEventListener('dragstart', function(e){ e.preventDefault(); });
+      el.addEventListener('pointerdown', function(e){
+        if (e.button > 0) return;
+        if (!el._home) {
+          el._home = { style: el.getAttribute('style') || '' };
+          el._base = getComputedStyle(el).transform;
+          el._tz = tzOf(el._base);
+          var l = el.offsetLeft, t = el.offsetTop;
+          el.style.left = l + 'px'; el.style.top = t + 'px'; el.style.right = 'auto'; el.style.bottom = 'auto';
+        }
+        top += 1;
+        var lift = 320 + top * 8, z = el._tz + lift;
+        var s = Math.max(.3, (PERSP - z) / (PERSP - el._tz));
+        el.style.transform = 'translateZ(' + lift + 'px) scale(' + s.toFixed(4) + ') ' + el._base;
+        el.classList.add('dragging');
+        drag = { el: el, x: e.clientX, y: e.clientY, l: parseFloat(el.style.left), t: parseFloat(el.style.top), id: e.pointerId };
+        try { el.setPointerCapture(e.pointerId); } catch (err) {}
+        e.preventDefault();
+      });
+      el.addEventListener('pointermove', function(e){
+        if (!drag || drag.el !== el || e.pointerId !== drag.id) return;
+        var sr = stage.getBoundingClientRect();
+        var nl = drag.l + (e.clientX - drag.x), nt = drag.t + (e.clientY - drag.y);
+        el.style.left = Math.max(-80, Math.min(sr.width - 40, nl)) + 'px';
+        el.style.top = Math.max(-40, Math.min(sr.height - 30, nt)) + 'px';
+      });
+      function end(e){
+        if (!drag || drag.el !== el) return;
+        el.classList.remove('dragging'); drag = null;
+        try { el.releasePointerCapture(e.pointerId); } catch (err) {}
+      }
+      el.addEventListener('pointerup', end);
+      el.addEventListener('pointercancel', end);
+    });
+    var reset = document.getElementById('resetLayers');
+    if (reset) reset.addEventListener('click', function(){
+      layers.forEach(function(el){
+        if (!el._home) return;
+        el.setAttribute('style', el._home.style); el._home = null;
+      });
+      top = 0;
+    });
+  })();
 
   /* 3D tilt on cards (mouse only, skipped on low-end) */
   if (fine && !reduce && !document.documentElement.classList.contains('lite')) {
