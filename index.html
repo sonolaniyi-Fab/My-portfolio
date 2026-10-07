@@ -313,7 +313,15 @@ html[data-theme="dark"] .rocker .face{box-shadow:inset 0 -12px 13px -9px rgba(0,
 .madc li::before{content:"✓";position:absolute;left:0;color:var(--ember);font-weight:700}
 .madc.dark{background:var(--ink);color:var(--paper);box-shadow:8px 8px 0 var(--ember)}
 .madc.dark p{color:var(--paper);opacity:.85;font-size:14px;margin:0 0 10px}
-@media(max-width:760px){.mads{grid-template-columns:1fr}.spotscreen{height:420px}}
+.livead{background:var(--panel);border:2px solid var(--hard);border-radius:16px;padding:22px;margin:30px 0 26px;box-shadow:8px 8px 0 var(--ember)}
+.liveh{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.liveh b{font-family:var(--disp);font-size:20px}
+.tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:16px 0 12px}
+.tile{border:2px solid var(--hard);border-radius:12px;padding:12px;background:var(--panel-2)}
+.tile .tn{font-family:var(--disp);font-weight:700;font-size:clamp(20px,2.6vw,28px);color:var(--ember)}
+.tile:nth-child(even) .tn{color:var(--cobalt)}
+.tile .tl{font-size:11.5px;color:var(--muted);line-height:1.35;margin-top:2px}
+@media(max-width:760px){.mads{grid-template-columns:1fr}.spotscreen{height:420px}.tiles{grid-template-columns:repeat(2,1fr)}}
 
 /* CONTACT */
 .contact{margin:80px 0 0}
@@ -483,7 +491,18 @@ footer{padding:34px 0 46px;font-family:var(--mono);font-size:12px;color:var(--mu
 <section class="sec"><div class="wrap">
   <div class="sec-h reveal"><span class="num">05</span><span class="eyebrow">Paid results · real account</span></div>
   <h2 class="reveal">Real campaigns, real purchases.</h2>
-  <p class="sub reveal">Pulled from a real Meta Ads Manager account I run. These are five of my best purchase-driving ads. Click any row to drill from campaign to ad set to ad, the way Ads Manager nests them.</p>
+  <p class="sub reveal">Pulled from a real Meta Ads Manager account I run. First, a campaign that is running right now. Below it, five of my best purchase-driving ads: click any row to drill from campaign to ad set to ad, the way Ads Manager nests them.</p>
+  <div class="livead reveal">
+    <div class="liveh"><span class="tag ember"><span class="live" style="display:inline-block;margin-right:6px"></span>Live now</span><b>Rechargeable blender, sales campaign</b><span class="small">Spotshop ad account · lifetime to 7 Oct 2026 · still running</span></div>
+    <div class="tiles">
+      <div class="tile"><div class="tn">45</div><div class="tl">purchases reported by Meta</div></div>
+      <div class="tile"><div class="tn">₦835</div><div class="tl">cost per purchase</div></div>
+      <div class="tile"><div class="tn">8.47%</div><div class="tl">click-through rate</div></div>
+      <div class="tile"><div class="tn">₦37,580</div><div class="tl">total ad spend</div></div>
+      <div class="tile"><div class="tn">10,181</div><div class="tl">people reached</div></div>
+    </div>
+    <p class="small">The blender sells for ₦35,500 on spotshop.org, so each purchase costs about 2% of the price in ads. Numbers are copied from Ads Manager and keep changing while the campaign runs. Purchases are as reported by Meta's pixel.</p>
+  </div>
   <div class="fbm reveal">
     <div class="fbm-top">
       <span class="fbm-logo">f</span>
@@ -532,7 +551,7 @@ footer{padding:34px 0 46px;font-family:var(--mono);font-size:12px;color:var(--mu
       <ul><li>Campaign structure (CBO and Advantage+) matched to your product and budget</li><li>Audiences, placements, ad copy and creative testing</li><li>I work out your break-even cost per order before launch</li><li>Weekly optimisation and a short report you can read</li><li>You keep ownership of every account and pay Meta directly</li></ul></div>
   </div>
   <div class="madc dark reveal" style="margin-top:18px"><b style="font-family:var(--disp);font-size:18px">Real results from my own accounts</b>
-    <p style="margin-top:8px">100+ Meta and Google campaigns, 1,000+ orders on a single product in three months, and purchases at roughly ₦411 to ₦887 each at the top end. You can see the Ads Manager view above in the "Real campaigns, real purchases" section.</p>
+    <p style="margin-top:8px">100+ Meta and Google campaigns and 1,000+ orders on a single product in three months. Right now my rechargeable blender campaign has 45 purchases at ₦835 each with an 8.47% click-through rate. The full Ads Manager view is in the "Real campaigns, real purchases" section.</p>
     <a href="#contact" class="btn" style="margin-top:6px">Get your ads audited →</a></div>
 </div></section>
 
