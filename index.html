@@ -341,15 +341,131 @@ footer{padding:34px 0 46px;font-family:var(--mono);font-size:12px;color:var(--mu
 .reveal.in{opacity:1;transform:none}
 :focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:background .01s,color .01s!important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}.marquee .row{animation:none}}
+.phone.flat{width:300px;border:0;padding:0;background:none;box-shadow:none;border-radius:0}
+.flat .pscreen{height:auto;border-radius:26px;background:none;overflow:hidden}
+.flat .pscroll{position:relative;inset:auto;overflow:visible}
+.flat .canvas img{border-radius:26px;box-shadow:0 24px 44px -18px rgba(0,0,0,.55);width:100%;display:block}
+
+/* ====== V2: DEPTH, MOTION, SCROLL ====== */
+#prog{position:fixed;top:0;left:0;height:4px;width:100%;background:linear-gradient(90deg,var(--ember),var(--cobalt));transform:scaleX(0);transform-origin:0 50%;z-index:100}
+.ambient{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.ambient i{position:absolute;border-radius:50%;filter:blur(110px);opacity:.14;will-change:transform}
+.ambient i:nth-child(1){width:460px;height:460px;background:var(--ember);left:-160px;top:12vh}
+.ambient i:nth-child(2){width:520px;height:520px;background:var(--cobalt);right:-220px;top:44vh}
+.ambient i:nth-child(3){width:360px;height:360px;background:#8a5cff;left:34vw;bottom:-180px}
+html[data-theme="dark"] .ambient i{opacity:.26}
+html.lite .ambient i{filter:blur(40px);opacity:.18}
+
+/* hero stage */
+@media(min-width:901px){.hero-grid{grid-template-columns:1fr 1.05fr}}
+.stage-wrap{display:flex;flex-direction:column;align-items:center;gap:6px}
+.stage{position:relative;width:min(560px,94vw);height:560px;perspective:1300px;touch-action:pan-y}
+.stage-in{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));will-change:transform}
+.orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;pointer-events:none}
+.o1{width:300px;height:300px;background:var(--ember);right:0;top:20px}
+.o2{width:260px;height:260px;background:var(--cobalt);left:10px;bottom:20px}
+.o3{width:140px;height:140px;background:#ffd23f;left:46%;top:2%;opacity:.45}
+.layer{position:absolute;transform-style:preserve-3d}
+.l-browser{left:0;top:84px;width:420px;transform:translateZ(-70px) rotateY(16deg) rotateX(3deg);animation:fl1 7s ease-in-out infinite}
+.l-phone{right:18px;top:20px;transform:translateZ(90px) rotateY(-14deg) rotateX(4deg);animation:fl2 6s ease-in-out infinite}
+.l-chip{background:rgba(255,255,255,.78);backdrop-filter:blur(8px);border:2px solid var(--hard);border-radius:16px;padding:10px 16px;box-shadow:6px 6px 0 var(--hard);font-family:var(--mono);color:#161318}
+html[data-theme="dark"] .l-chip{background:rgba(30,26,36,.86);color:#F2ECE0;box-shadow:6px 6px 0 #000}
+.l-chip b{display:block;font-family:var(--disp);font-size:30px;line-height:1;color:var(--ember)}
+.l-chip span{font-size:11px;letter-spacing:.04em}
+.c1{left:6px;bottom:96px;transform:translateZ(150px);animation:fl3 5.5s ease-in-out infinite}
+.c2{right:2px;bottom:48px;transform:translateZ(170px);animation:fl4 6.5s ease-in-out infinite}
+.c3{left:90px;top:24px;transform:translateZ(120px);animation:fl2 7s ease-in-out infinite;padding:10px 16px}
+.l-me{left:128px;bottom:6px;width:112px;height:112px;transform:translateZ(190px);animation:fl1 8s ease-in-out infinite}
+.l-me img{width:100%;height:100%;object-fit:cover;border-radius:50%;border:4px solid var(--hard);box-shadow:6px 6px 0 var(--ember);background:var(--panel)}
+@keyframes fl1{0%,100%{translate:0 0}50%{translate:0 -12px}}
+@keyframes fl2{0%,100%{translate:0 0}50%{translate:0 -18px}}
+@keyframes fl3{0%,100%{translate:0 0}50%{translate:0 -10px}}
+@keyframes fl4{0%,100%{translate:0 0}50%{translate:0 14px}}
+.bwin{border:3px solid var(--hard);border-radius:14px;overflow:hidden;background:#0b1226;box-shadow:12px 14px 0 rgba(22,19,24,.9)}
+.bbar2{height:28px;background:var(--panel);display:flex;align-items:center;gap:6px;padding:0 12px;border-bottom:2px solid var(--hard)}
+.bbar2 i{width:9px;height:9px;border-radius:50%;background:#FF6058;display:inline-block}
+.bbar2 i:nth-child(2){background:#FFBD2E}.bbar2 i:nth-child(3){background:#28C840}
+.bbar2 span{margin-left:8px;font-family:var(--mono);font-size:10px;color:var(--muted)}
+.bwin img{width:100%;display:block}
+.ph{position:relative;width:230px;border:8px solid #161318;border-radius:38px;overflow:hidden;background:#0c1330;box-shadow:14px 18px 0 rgba(255,90,44,.9),0 30px 60px -20px rgba(0,0,0,.55)}
+.ph img{width:100%;display:block;aspect-ratio:9/19;object-fit:cover;object-position:top}
+.ph-notch{position:absolute;top:8px;left:50%;translate:-50% 0;width:70px;height:18px;background:#161318;border-radius:12px;z-index:2}
+@media(max-width:900px){.stage{height:440px;width:min(400px,94vw)}.l-browser{width:300px;top:70px}.ph{width:170px;border-width:6px;border-radius:30px}.l-me{width:84px;height:84px;left:96px}.l-chip b{font-size:22px}.c3{left:54px}}
+
+/* scroll reveal with depth */
+html.gs .reveal{transition:none}
+.sec h2{transform-style:preserve-3d}
+
+/* tilt targets */
+.tilt3d,.svcc,.pc,.madc,.tile,.idc,.proj{transform-style:preserve-3d;transition:transform .25s ease-out,box-shadow .18s}
+.tilting{transition:transform .06s linear!important}
+
+/* showcase (pinned horizontal scroll) */
+.showcase{padding:86px 0 0;position:relative}
+.pin{overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:26px;min-height:100vh}
+.sc-head h2{font-family:var(--disp);font-weight:700;font-size:clamp(26px,4.2vw,44px);text-transform:uppercase;letter-spacing:-.02em;line-height:1.05;margin:10px 0 0}
+.sc-head .sub{color:var(--muted);max-width:540px;margin:10px 0 0}
+.track{display:flex;gap:36px;padding:0 max(26px,calc((100vw - var(--maxw))/2 + 26px));width:max-content;will-change:transform}
+.panel{width:min(86vw,980px);height:min(60vh,540px);min-height:430px;display:grid;grid-template-columns:1fr 1.1fr;gap:26px;align-items:center;border:3px solid var(--hard);border-radius:26px;background:var(--panel);padding:30px;box-shadow:12px 12px 0 var(--cobalt);perspective:1100px;flex:none}
+.panel:nth-child(even){box-shadow:12px 12px 0 var(--ember)}
+.panel h3{font-family:var(--disp);font-size:clamp(28px,3.6vw,46px);line-height:1;margin:14px 0 12px;letter-spacing:-.02em}
+.panel p{color:var(--muted);font-size:14.5px;max-width:420px}
+.panel .tech{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 0}
+.panel .tech span{font-family:var(--mono);font-size:11px;border:2px solid var(--hard);border-radius:7px;padding:4px 9px;background:var(--panel-2)}
+.plinks{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0 0}
+.pvis{display:flex;align-items:center;justify-content:center;height:100%;min-width:0}
+.pvis .ph{transform:rotateY(-14deg) rotateX(4deg)}
+.pvis .bwin.big{width:100%;max-height:420px;transform:rotateY(-10deg) rotateX(3deg)}
+.pvis .bwin.big img{max-height:380px;object-fit:cover;object-position:top}
+.pdark{background:var(--ink);color:var(--paper)}
+.pdark p{color:var(--paper);opacity:.85}
+.pdark .tag{background:var(--panel);color:#161318}
+.bigtiles{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%}
+.bt{border:2px solid rgba(255,255,255,.28);border-radius:16px;padding:18px;background:rgba(255,255,255,.07)}
+.bt b{display:block;font-family:var(--disp);font-size:clamp(28px,3.4vw,44px);color:#FF8A66;letter-spacing:-.02em}
+.bt span{font-size:12.5px;opacity:.85}
+.pcta{background:var(--ember);color:#fff;grid-template-columns:1fr}
+.pcta p{color:#fff;opacity:.95}
+.pcta .btn{background:#fff;color:var(--ember)}
+@media(max-width:900px){
+  .pin{min-height:0;gap:18px}
+  .track{width:auto;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 26px 28px;gap:18px;-webkit-overflow-scrolling:touch}
+  .panel{flex:0 0 88vw;width:88vw;height:auto;min-height:0;grid-template-columns:1fr;padding:22px;scroll-snap-align:center}
+  .pvis{height:auto;padding:6px 0 10px}
+  .pvis .bwin.big img{max-height:260px}
+}
+@media(prefers-reduced-motion:reduce){.layer,.stage-in{animation:none!important}.ambient i{display:none}}
+
+/* app screens already carry their own phone frame: show them as flat 3D cards */
+.ph{border:0;border-radius:24px;background:transparent;box-shadow:14px 18px 0 rgba(255,90,44,.9),0 30px 60px -20px rgba(0,0,0,.55)}
+.ph img{aspect-ratio:auto;object-fit:contain;height:auto;border-radius:24px}
+.ph-notch{display:none}
+.l-phone .ph{width:215px}
+
+/* never let 3D layers widen the page on phones */
+html,body{max-width:100%;overflow-x:hidden}
+@supports (overflow-x:clip){html,body{overflow-x:clip}}
+.hero{overflow-x:clip}
+@media(max-width:900px){
+  .stage{width:min(360px,calc(100vw - 40px));margin:0 auto}
+  .l-browser{left:0;width:min(290px,78vw)}
+  .l-phone{right:6px}
+  .c1{left:0;transform:translateZ(60px)}
+  .c2{right:0;transform:translateZ(70px)}
+  .c3{left:40px;transform:translateZ(50px)}
+  .l-me{transform:translateZ(80px)}
+  .stage-in{--rx:0deg}
+}
 </style>
 </head>
 <body>
 <div class="cursor" id="cursor"></div>
+<div id="prog"></div><div class="ambient"><i></i><i></i><i></i></div>
 
 <nav><div class="wrap nav-in">
   <a href="#top" class="brand">olaniyi<b>.</b>builds()</a>
   <div class="nav-links">
-    <a href="#services">Services</a><a href="#meta">Meta ads</a><a href="#try">Work</a><a href="#pricing">Pricing</a><a href="#process">Process</a><a href="#faq">FAQ</a>
+    <a href="#services">Services</a><a href="#meta">Meta ads</a><a href="#showcase">Work</a><a href="#pricing">Pricing</a><a href="#process">Process</a><a href="#faq">FAQ</a>
     <a href="#contact" class="nav-cta">Start a project</a>
     <div class="mini" onclick="toggleTheme()" role="button" aria-label="Toggle theme"><i></i></div>
   </div>
@@ -364,11 +480,17 @@ footer{padding:34px 0 46px;font-family:var(--mono);font-size:12px;color:var(--mu
     <div class="cta reveal"><a href="#contact" class="btn fill">Get a free quote →</a><a href="#try" class="btn">See my live work</a></div>
     <div class="avail reveal"><span class="live"></span> replies within a few hours · fixed prices · 50% to start, 50% on delivery</div>
   </div>
-  <div class="hero-right reveal">
-    <div class="portrait">
-      <span class="stick top">Developer</span>
-      <div class="frame"><img data-img="headshot" alt="Femi Olaniyi, web and app developer in Lagos"></div>
-      <span class="stick bot">Marketer</span>
+    <div class="hero-right stage-wrap">
+    <div class="stage" id="stage" aria-hidden="false">
+      <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+      <div class="stage-in" id="stageIn">
+        <div class="layer l-browser"><div class="bwin"><div class="bbar2"><i></i><i></i><i></i><span>ajala.live</span></div><img data-img="webdesk" alt="Ajala website"></div></div>
+        <div class="layer l-phone"><div class="ph"><span class="ph-notch"></span><img data-img="home" alt="Ajala app on a phone"></div></div>
+        <div class="layer l-chip c1"><b>45</b><span>purchases, live Meta campaign</span></div>
+        <div class="layer l-chip c2"><b>8.47%</b><span>click-through rate</span></div>
+        <div class="layer l-chip c3"><span>&#9654; Live on Google Play</span></div>
+        <div class="layer l-me"><img data-img="headshot" alt="Femi Olaniyi, web and app developer in Lagos"></div>
+      </div>
     </div>
     <div class="switchbox">
       <div class="sw" id="wall" onclick="toggleTheme()" role="button" aria-label="Light switch: toggle light and dark" tabindex="0">
@@ -389,6 +511,54 @@ footer{padding:34px 0 46px;font-family:var(--mono);font-size:12px;color:var(--mu
   <div class="stat"><div class="n" data-to="3" data-suffix="+">0</div><div class="l">products &amp; stores shipped end&nbsp;to&nbsp;end</div></div>
 </div></div>
 
+<section class="showcase" id="showcase" aria-label="Selected work">
+  <div class="pin" id="pin">
+    <div class="wrap sc-head">
+      <div class="sec-h"><span class="num">&#9733;</span><span class="eyebrow">Selected work</span></div>
+      <h2>Scroll through what I have shipped.</h2>
+      <p class="sub">A live app, two live stores and a campaign that is running right now. Swipe or scroll sideways.</p>
+    </div>
+    <div class="track" id="track">
+      <article class="panel">
+        <div class="pcopy"><span class="tag ember">01 · Mobile app</span><h3>Àjàlá</h3>
+          <p>A transit and safety co-pilot for Lagos. Finds danfo, BRT and ferry routes, shares live road reports, and lets you share a trip with someone you trust. I designed and built the app, the website and the backend alone.</p>
+          <div class="tech"><span>React Native</span><span>Next.js</span><span>Supabase</span><span>PostGIS</span></div>
+          <div class="plinks"><a href="https://play.google.com/store/apps/details?id=live.ajala.app" target="_blank" rel="noopener" class="btn fill">&#9654; Google Play</a><a href="https://ajala.live" target="_blank" rel="noopener" class="btn">ajala.live</a></div></div>
+        <div class="pvis"><div class="ph tilt3d"><span class="ph-notch"></span><img data-img="app_brief" alt="Ajala route brief"></div></div>
+      </article>
+      <article class="panel">
+        <div class="pcopy"><span class="tag cobalt">02 · My store, live</span><h3>Spotshop.org</h3>
+          <p>A registered Nigerian e-commerce business I built and run. New, used and car listings, partner shops, pay on delivery in Lagos, Paystack or bank transfer elsewhere, and every order confirmed on WhatsApp.</p>
+          <div class="tech"><span>WordPress</span><span>Elementor</span><span>Paystack</span><span>WhatsApp commerce</span></div>
+          <div class="plinks"><a href="https://spotshop.org" target="_blank" rel="noopener" class="btn fill cobalt">Visit spotshop.org</a></div></div>
+        <div class="pvis"><div class="bwin big tilt3d"><div class="bbar2"><i></i><i></i><i></i><span>spotshop.org</span></div><img src="img/spot_site_desk.png" alt="Spotshop homepage" loading="lazy"></div></div>
+      </article>
+      <article class="panel">
+        <div class="pcopy"><span class="tag ember">03 · Client store</span><h3>arese.fit</h3>
+          <p>A sneaker and fashion store designed and built end to end, with cash on delivery, a fast mobile layout and a short checkout. Click through the real pages further down.</p>
+          <div class="tech"><span>WordPress</span><span>WooCommerce</span><span>Responsive</span></div>
+          <div class="plinks"><a href="https://arese.fit" target="_blank" rel="noopener" class="btn fill">Visit arese.fit</a></div></div>
+        <div class="pvis"><div class="bwin big tilt3d"><div class="bbar2"><i></i><i></i><i></i><span>arese.fit</span></div><img data-img="ar_home" alt="arese.fit homepage" loading="lazy"></div></div>
+      </article>
+      <article class="panel pdark">
+        <div class="pcopy"><span class="tag ember"><span class="live" style="display:inline-block;margin-right:6px"></span>04 · Live now</span><h3>Rechargeable blender campaign</h3>
+          <p>A Meta sales campaign on my Spotshop ad account, running since 1 October 2026. Numbers copied from Ads Manager and they keep moving while it runs.</p>
+          <div class="plinks"><a href="#meta" class="btn fill">How I run Meta ads</a></div></div>
+        <div class="pvis"><div class="bigtiles">
+          <div class="bt tilt3d"><b>45</b><span>purchases reported by Meta</span></div>
+          <div class="bt tilt3d"><b>₦840</b><span>cost per purchase</span></div>
+          <div class="bt tilt3d"><b>8.47%</b><span>click-through rate</span></div>
+          <div class="bt tilt3d"><b>10,229</b><span>people reached</span></div></div></div>
+      </article>
+      <article class="panel pcta">
+        <div class="pcopy"><span class="tag">Next</span><h3>Your project could be here.</h3>
+          <p>Tell me what the business needs and I will tell you what it will cost. Fixed price, written scope, a reply within a few hours.</p>
+          <div class="plinks"><a href="#contact" class="btn fill">Start a project</a><a href="https://wa.me/2348105464346" target="_blank" rel="noopener" class="btn">WhatsApp me</a></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section class="sec" id="services"><div class="wrap">
   <div class="sec-h reveal"><span class="num">01</span><span class="eyebrow">What I build for you</span></div>
   <h2 class="reveal">One person. Design, code and customers.</h2>
@@ -406,10 +576,10 @@ footer{padding:34px 0 46px;font-family:var(--mono);font-size:12px;color:var(--mu
 <section class="sec" id="try"><div class="wrap">
   <div class="sec-h reveal"><span class="num">02</span><span class="eyebrow">Featured app · try it</span></div>
   <h2 class="reveal">Àjàlá, running right here.</h2>
-  <p class="sub reveal">Tap the buttons, switch Danfo / BRT / Ferry, or swipe the phone. It's the real app, embedded. I designed and built the app, the website, and the routing engine.</p>
+  <p class="sub reveal">Swipe through the real screens from the app on Google Play. I designed and built the app, the website and the routing engine.</p>
   <div class="fwrap">
     <div class="reveal">
-      <div class="phone">
+      <div class="phone flat">
         <div class="pscreen"><div class="pscroll" id="screen"><div class="canvas" id="canvas"></div></div></div>
       </div>
       <div class="pbar">
@@ -424,8 +594,8 @@ footer{padding:34px 0 46px;font-family:var(--mono);font-size:12px;color:var(--mu
       <h3>Àjàlá · Lagos transit &amp; safety co-pilot</h3>
       <p>A co-pilot for Lagos's informal transport. It finds Danfo, BRT and Ferry routes, tells you the exact conductor shout to listen for, crowdsources live road intel, and shares your trip with a trusted contact. A tab only shows when that mode exists for your trip.</p>
       <div class="tech"><span>React Native</span><span>Next.js</span><span>Supabase</span><span>PostGIS</span><span>Vercel</span></div>
-      <div class="links"><a href="https://play.google.com/store/apps/details?id=live.ajala.app" target="_blank" rel="noopener" class="btn fill">&#9654; Get it on Google Play</a><a href="https://ajala.live" target="_blank" rel="noopener" class="btn fill cobalt">Visit ajala.live →</a><button class="btn" onclick="go('onboarding')">↺ Restart</button></div>
-      <div class="note">Heads up: the three tabs show the same Unilag → Ikorodu trip solved three ways — by Danfo, BRT and Ferry. Scroll each one to see the full itinerary.</div>
+      <div class="links"><a href="https://play.google.com/store/apps/details?id=live.ajala.app" target="_blank" rel="noopener" class="btn fill">&#9654; Get it on Google Play</a><a href="https://ajala.live" target="_blank" rel="noopener" class="btn fill cobalt">Visit ajala.live →</a><button class="btn" onclick="go('app_home')">↺ First screen</button></div>
+      <div class="note">These are the real screens from the app on Google Play: planning a trip, the route brief with fare and changes, live step-by-step guidance, and the Grid of live road reports from other travellers.</div>
     </div>
   </div>
 
@@ -606,7 +776,7 @@ footer{padding:34px 0 46px;font-family:var(--mono);font-size:12px;color:var(--mu
 <footer><div class="wrap foot-in"><span>© <span id="yr"></span> Oluwafemi Abraham Olaniyi</span><span>Designed and built by me · Lagos, Nigeria</span></div></footer>
 
 <script>
-var IMG={"onboarding":"img/onboarding.jpg","home":"img/home.jpg","searchfilled":"img/searchfilled.jpg","roadintel":"img/roadintel.jpg","report":"img/report.jpg","submit":"img/submit.jpg","guardian":"img/guardian.jpg","route_danfo":"img/route_danfo.jpg","route_brt":"img/route_brt.jpg","route_ferry":"img/route_ferry.jpg","headshot":"img/headshot.jpg","webdesk":"img/webdesk.jpg","webmob":"img/webmob.jpg","ar_home":"img/ar_home.jpg","ar_shop":"img/ar_shop.jpg","ar_product":"img/ar_product.jpg","ar_cart":"img/ar_cart.jpg","ar_checkout":"img/ar_checkout.jpg","spot_styler":"img/spot_styler.jpg","spot_dryer":"img/spot_dryer.jpg","ar_m_home":"img/ar_m_home.jpg","ar_m_shop":"img/ar_m_shop.jpg","ar_m_product":"img/ar_m_product.jpg","ar_m_checkout":"img/ar_m_checkout.jpg","ar_m_menu":"img/ar_m_menu.jpg","spot_confirm":"img/spot_confirm.jpg"};
+var IMG={"onboarding":"img/onboarding.jpg","home":"img/app_home.jpg","searchfilled":"img/searchfilled.jpg","roadintel":"img/roadintel.jpg","report":"img/report.jpg","submit":"img/submit.jpg","guardian":"img/guardian.jpg","route_danfo":"img/route_danfo.jpg","route_brt":"img/route_brt.jpg","route_ferry":"img/route_ferry.jpg","headshot":"img/headshot.jpg","webdesk":"img/web_desk.jpg","webmob":"img/web_mob_clean.jpg","ar_home":"img/ar_home.jpg","ar_shop":"img/ar_shop.jpg","ar_product":"img/ar_product.jpg","ar_cart":"img/ar_cart.jpg","ar_checkout":"img/ar_checkout.jpg","spot_styler":"img/spot_styler.jpg","spot_dryer":"img/spot_dryer.jpg","ar_m_home":"img/ar_m_home.jpg","ar_m_shop":"img/ar_m_shop.jpg","ar_m_product":"img/ar_m_product.jpg","ar_m_checkout":"img/ar_m_checkout.jpg","ar_m_menu":"img/ar_m_menu.jpg","spot_confirm":"img/spot_confirm.jpg","app_home":"img/app_home.jpg","app_planner":"img/app_planner.jpg","app_brief":"img/app_brief.jpg","app_journey":"img/app_journey.jpg","app_grid":"img/app_grid.jpg","app_report":"img/app_report.jpg","app_done":"img/app_done.jpg"};
 document.querySelectorAll('[data-img]').forEach(function(el){el.src=IMG[el.dataset.img];});
 document.getElementById('yr').textContent=new Date().getFullYear();
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -639,43 +809,22 @@ function countUp(el){var to=+el.dataset.to,suf=el.dataset.suffix||'',pre=el.data
 var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){countUp(e.target);so.unobserve(e.target);}});},{threshold:.5});
 document.querySelectorAll('.stat .n').forEach(function(n){so.observe(n);});
 
-/* ---- ÀJÁLÁ INTERACTIVE PHONE ---- */
-var SCREENS={
-  onboarding:{img:'onboarding',name:'Onboarding',tip:'Press “Get Started”, or swipe / use the arrows.',spots:[{t:85,l:8,w:84,h:9,go:'home',hint:1}]},
-  home:{img:'home',name:'Search',tip:'Type a route, open Road Intel, or your profile.',spots:[{t:7,l:79,w:18,h:7,go:'guardian'},{t:40,l:50,w:44,h:6,go:'roadintel'},{t:55,l:7,w:86,h:23,go:'searchfilled',hint:1}]},
-  searchfilled:{img:'searchfilled',name:'Route set',tip:'Press “Get Directions”.',spots:[{t:78,l:7,w:86,h:8,go:'danfo',hint:1},{t:40,l:50,w:44,h:6,go:'roadintel'},{t:7,l:79,w:18,h:7,go:'guardian'}]},
-  roadintel:{img:'roadintel',name:'Road Intel',tip:'Report traffic, submit a route, or go back.',spots:[{t:29,l:8,w:38,h:6,go:'home'},{t:50,l:8,w:40,h:9,go:'report',hint:1},{t:50,l:51,w:42,h:9,go:'submit'},{t:11,l:79,w:18,h:6,go:'guardian'}]},
-  report:{img:'report',name:'Report road',tip:'Close to go back.',spots:[{t:27,l:5,w:18,h:5,go:'roadintel',hint:1}]},
-  submit:{img:'submit',name:'Submit intel',tip:'Close to go back.',spots:[{t:23,l:5,w:18,h:5,go:'roadintel',hint:1}]},
-  guardian:{img:'guardian',name:'Guardian',tip:'Safety inbox. Close to go back.',spots:[{t:3,l:85,w:12,h:5,go:'home',hint:1}]}
-};
-var ROUTES={danfo:'route_danfo',brt:'route_brt',ferry:'route_ferry'};
-var RLABEL={danfo:'Danfo',brt:'BRT',ferry:'Ferry'};
-var ORDER=['onboarding','home','searchfilled','danfo','brt','ferry','roadintel','report','submit','guardian'];
-var RNAME={danfo:'Danfo route',brt:'BRT route',ferry:'Ferry route'};
-var CHIPS=[['onboarding','Start'],['home','Search'],['danfo','Routes'],['roadintel','Road Intel'],['guardian','Guardian']];
-var current='onboarding';
+/* ---- ÀJÀLÁ APP SCREENS (as on Google Play) ---- */
+var ORDER=['app_home','app_planner','app_brief','app_journey','app_grid','app_report','app_done'];
+var NAMES=['Find a route','Plan a journey','Route brief','One step at a time','The Grid','Report the road','You made it'];
+var CHIPS=[['app_home','Search'],['app_brief','Route'],['app_journey','Journey'],['app_grid','The Grid'],['app_report','Report']];
+var current='app_home';
 var canvas=document.getElementById('canvas'), screen=document.getElementById('screen');
-
 function paint(){
-  if(ROUTES[current]){
-    var tabs=['danfo','brt','ferry'].map(function(k){return '<button class="rt'+(k===current?' on':'')+'" onclick="go(\''+k+'\')">'+RLABEL[k]+'</button>';}).join('');
-    canvas.innerHTML='<div class="route"><div class="route-top"><button class="route-back" onclick="go(\'searchfilled\')">‹ Back to search</button><div class="route-tabs">'+tabs+'</div></div><img src="'+IMG[ROUTES[current]]+'" alt=""><button class="route-start">Start this Route →</button></div>';
-  }else{
-    var s=SCREENS[current], html='<img src="'+IMG[s.img]+'" alt="">';
-    s.spots.forEach(function(h){html+='<div class="hot'+(h.hint?' hint':'')+'" style="top:'+h.t+'%;left:'+h.l+'%;width:'+h.w+'%;height:'+h.h+'%" onclick="go(\''+h.go+'\')"></div>';});
-    canvas.innerHTML=html;
-  }
-  screen.scrollTop=0;
-  var label=ROUTES[current]?RNAME[current]:SCREENS[current].name;
   var idx=ORDER.indexOf(current);
-  document.getElementById('pnow').textContent=label+'  ·  '+(idx+1)+'/'+ORDER.length;
-  document.getElementById('ptip').textContent=ROUTES[current]?'Tap Danfo, BRT or Ferry. A tab only shows when that mode exists for the trip.':SCREENS[current].tip;
-  document.querySelectorAll('#chips .chip').forEach(function(b){b.classList.toggle('on',b.dataset.s===current||(ROUTES[current]&&b.dataset.s==='danfo'));});
+  canvas.innerHTML='<img src="'+IMG[current]+'" alt="Ajala app: '+NAMES[idx]+'">';
+  document.getElementById('pnow').textContent=NAMES[idx]+'  ·  '+(idx+1)+'/'+ORDER.length;
+  document.getElementById('ptip').textContent='Swipe or use the arrows. These are the screens from the app on Google Play.';
+  document.querySelectorAll('#chips .chip').forEach(function(b){b.classList.toggle('on',b.dataset.s===current);});
 }
 function go(id){current=id;paint();}
-function nextScreen(){var i=ORDER.indexOf(current);go(ORDER[Math.min(i+1,ORDER.length-1)]);}
-function prevScreen(){var i=ORDER.indexOf(current);go(ORDER[Math.max(i-1,0)]);}
+function nextScreen(){var i=ORDER.indexOf(current);go(ORDER[(i+1)%ORDER.length]);}
+function prevScreen(){var i=ORDER.indexOf(current);go(ORDER[(i-1+ORDER.length)%ORDER.length]);}
 window.go=go;window.nextScreen=nextScreen;window.prevScreen=prevScreen;
 document.getElementById('chips').innerHTML=CHIPS.map(function(c){return '<button class="chip" data-s="'+c[0]+'" onclick="go(\''+c[0]+'\')">'+c[1]+'</button>';}).join('');
 
@@ -769,6 +918,128 @@ function fbBack(){if(fbLevel==='ad'){fbLevel='adset';}else{fbLevel='campaign';fb
 function fbTab(lv){fbLevel=lv;fbFocus=null;fbRender();}
 window.fbDrill=fbDrill;window.fbBack=fbBack;window.fbTab=fbTab;
 fbRender();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = matchMedia('(pointer:fine)').matches;
+  var cores = navigator.hardwareConcurrency || 4, mem = navigator.deviceMemory || 4;
+  if (cores <= 4 || mem <= 2) document.documentElement.classList.add('lite');
+
+  /* progress bar */
+  var prog = document.getElementById('prog');
+  function onScroll(){
+    var h = document.documentElement.scrollHeight - innerHeight;
+    if (prog && h > 0) prog.style.transform = 'scaleX(' + Math.min(1, scrollY / h) + ')';
+  }
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* hero 3D tilt follows the pointer */
+  var stage = document.getElementById('stage'), inner = document.getElementById('stageIn');
+  if (stage && inner && !reduce) {
+    var tx = 0, ty = 0, cx = 0, cy = 0, run = false;
+    function loop(){
+      cx += (tx - cx) * 0.08; cy += (ty - cy) * 0.08;
+      inner.style.setProperty('--ry', (cx * 16).toFixed(2) + 'deg');
+      inner.style.setProperty('--rx', (-cy * 12).toFixed(2) + 'deg');
+      if (Math.abs(tx - cx) > 0.001 || Math.abs(ty - cy) > 0.001) requestAnimationFrame(loop); else run = false;
+    }
+    function kick(){ if (!run) { run = true; requestAnimationFrame(loop); } }
+    addEventListener('pointermove', function(e){
+      var r = stage.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > innerHeight) return;
+      tx = ((e.clientX - (r.left + r.width / 2)) / innerWidth) * 2;
+      ty = ((e.clientY - (r.top + r.height / 2)) / innerHeight) * 2;
+      kick();
+    }, {passive:true});
+  }
+
+  /* 3D tilt on cards (mouse only, skipped on low-end) */
+  if (fine && !reduce && !document.documentElement.classList.contains('lite')) {
+    var sel = '.svcc,.pc,.madc,.tile,.idc,.tilt3d,.bt';
+    document.querySelectorAll(sel).forEach(function(el){
+      el.addEventListener('pointermove', function(e){
+        var r = el.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
+        el.classList.add('tilting');
+        el.style.transform = 'perspective(900px) rotateY(' + (px * 12).toFixed(2) + 'deg) rotateX(' + (-py * 10).toFixed(2) + 'deg) translateZ(8px)';
+      });
+      el.addEventListener('pointerleave', function(){
+        el.classList.remove('tilting'); el.style.transform = '';
+      });
+    });
+  }
+
+  /* GSAP: scroll scenes (only if the library loaded) */
+  function startGsap(){
+    if (!window.gsap || !window.ScrollTrigger || reduce) return;
+    gsap.registerPlugin(ScrollTrigger);
+    document.documentElement.classList.add('gs');
+
+    /* hero entrance */
+    var tl = gsap.timeline({defaults:{ease:'power3.out'}});
+    tl.fromTo('.hero .stickrow,.hero h1', {y:60, opacity:0}, {y:0, opacity:1, stagger:.12, duration:.9})
+      .fromTo('.hero .thesis,.hero .lede,.hero .cta,.hero .avail', {y:30, opacity:0}, {y:0, opacity:1, stagger:.1, duration:.7}, '-=.5')
+      .fromTo('.stage .layer', {opacity:0, scale:.7, y:50}, {opacity:1, scale:1, y:0, stagger:.12, duration:.9, ease:'back.out(1.4)', clearProps:'opacity,scale'}, '-=.9');
+    if (location.search.indexOf('end') > -1) tl.progress(1); /* debug: jump to the finished state */
+
+    /* hero parallax on scroll */
+    gsap.to('.stage-wrap', {yPercent:-12, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
+    gsap.to('.hero .hero-grid > div:first-child', {yPercent:8, opacity:.35, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
+
+    /* ambient orbs drift */
+    gsap.utils.toArray('.ambient i').forEach(function(o, i){
+      gsap.to(o, {y: (i % 2 ? -1 : 1) * 260, x: (i % 2 ? 1 : -1) * 90, ease:'none', scrollTrigger:{trigger:document.body, start:'top top', end:'bottom bottom', scrub:true}});
+    });
+
+    /* generic reveals, replacing the simple fade */
+    var rev = gsap.utils.toArray('.reveal').filter(function(el){ return !el.closest('.hero'); });
+    gsap.set(rev, {opacity:0, y:46, rotateX:8, transformPerspective:900, transformOrigin:'50% 100%'});
+    ScrollTrigger.batch(rev, {
+      start:'top 92%', once:true,
+      onEnter: function(b){ gsap.to(b, {opacity:1, y:0, rotateX:0, duration:.85, stagger:.08, ease:'power3.out', overwrite:true, clearProps:'transform'}); }
+    });
+    if (location.search.indexOf('end') > -1) gsap.set(rev, {opacity:1, y:0, rotateX:0}); /* debug */
+    /* safety net: never leave something in view hidden */
+    var tries = 0, guard = setInterval(function(){
+      rev.forEach(function(el){
+        var r = el.getBoundingClientRect();
+        if (r.top < innerHeight * .9 && r.bottom > 0 && parseFloat(getComputedStyle(el).opacity) === 0 && gsap.getTweensOf(el).length === 0) {
+          gsap.to(el, {opacity:1, y:0, rotateX:0, duration:.6, clearProps:'transform'});
+        }
+      });
+      if (++tries > 8) clearInterval(guard);
+    }, 800);
+
+    /* pinned horizontal showcase on desktop */
+    var mm = gsap.matchMedia();
+    mm.add('(min-width: 901px)', function(){
+      var track = document.getElementById('track'), pin = document.getElementById('pin');
+      if (!track || !pin) return;
+      var dist = function(){ return Math.max(0, track.scrollWidth - innerWidth + 40); };
+      var tween = gsap.to(track, {x: function(){ return -dist(); }, ease:'none',
+        scrollTrigger:{trigger:pin, start:'top top', end:function(){ return '+=' + dist(); }, pin:true, scrub:.6, anticipatePin:1, invalidateOnRefresh:true}});
+      gsap.utils.toArray('.panel .pvis > *').forEach(function(el){
+        gsap.fromTo(el, {rotateY:-26, y:30}, {rotateY:-8, y:0, ease:'none',
+          scrollTrigger:{trigger:el.closest('.panel'), containerAnimation:tween, start:'left 95%', end:'left 30%', scrub:true}});
+      });
+    });
+
+    ScrollTrigger.refresh();
+    /* debug: ?at=sectionId&dy=pixels scrolls there after load so a still screenshot can be taken */
+    var qs = new URLSearchParams(location.search), at = qs.get('at');
+    if (at && document.getElementById(at)) {
+      setTimeout(function(){
+        var el = document.getElementById(at);
+        scrollTo(0, el.getBoundingClientRect().top + scrollY + (parseFloat(qs.get('dy')) || 0));
+        ScrollTrigger.update();
+      }, 1200);
+    }
+  }
+  if (document.readyState === 'complete') startGsap(); else addEventListener('load', startGsap);
+})();
 </script>
 </body>
 </html>
