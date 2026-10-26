@@ -340,6 +340,19 @@ html[data-theme="dark"] .rocker .face{box-shadow:inset 0 -12px 13px -9px rgba(0,
 .dbar span{font-size:10.5px;color:var(--muted);margin-top:5px}
 .dbar.on i,.dbar:hover i{background:var(--ember)}
 .dnote{font-size:12.5px;color:var(--muted);min-height:34px}
+.rec{display:grid;grid-template-columns:1.15fr 1fr;gap:34px;align-items:center;margin-top:26px}
+.rstack{position:relative;aspect-ratio:5/4;cursor:pointer;touch-action:pan-y}
+.rstack img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:3px solid var(--hard);border-radius:14px;background:var(--panel-2);transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .3s,box-shadow .3s}
+.rstack img.p0{z-index:3;transform:rotate(-1.5deg);box-shadow:10px 10px 0 var(--ember)}
+.rstack img.p1{z-index:2;transform:rotate(4deg) translate(18px,10px);opacity:.9}
+.rstack img.p2{z-index:1;transform:rotate(-6deg) translate(-16px,14px);opacity:.75}
+.rcap{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:22px;text-align:center;min-height:18px}
+.rcopy h3{font-family:var(--disp);font-size:clamp(24px,3.2vw,34px);margin:10px 0 10px;line-height:1.1}
+.rcopy blockquote{margin:14px 0;padding:12px 16px;border-left:4px solid var(--ember);background:var(--panel-2);border-radius:0 10px 10px 0;font-family:var(--disp);font-size:18px}
+.rcopy ul{list-style:none;padding:0;margin:0 0 14px;display:flex;flex-direction:column;gap:7px}
+.rcopy li{font-size:14.5px;padding-left:22px;position:relative}
+.rcopy li::before{content:"✓";position:absolute;left:0;color:var(--ember);font-weight:700}
+@media(max-width:760px){.rec{grid-template-columns:1fr;gap:20px}}
 .goal{background:var(--panel);border:2px solid var(--hard);border-radius:16px;padding:22px;margin:0 0 26px;box-shadow:8px 8px 0 var(--cobalt)}
 .goal h3{font-family:var(--disp);font-size:22px;margin:8px 0 6px}
 .goaltabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
@@ -633,6 +646,7 @@ html[data-theme="dark"] .sw .rocker .face{
         <div class="pcopy"><span class="tag ember">01 · Mobile app</span><h3>Àjàlá</h3>
           <p>A transit and safety co-pilot for Lagos. Finds danfo, BRT and ferry routes, shares live road reports, and lets you share a trip with someone you trust. I designed and built the app, the website and the backend alone.</p>
           <div class="tech"><span>React Native</span><span>Next.js</span><span>Supabase</span><span>PostGIS</span></div>
+          <p class="small" style="margin:8px 0 0"><a href="#record">Pitched live at Tech Revolution Africa 2.0 →</a></p>
           <div class="plinks"><a href="https://play.google.com/store/apps/details?id=live.ajala.app" target="_blank" rel="noopener" class="btn fill">&#9654; Google Play</a><a href="https://ajala.live" target="_blank" rel="noopener" class="btn">ajala.live</a></div></div>
         <div class="pvis"><div class="ph tilt3d"><span class="ph-notch"></span><img data-img="app_brief" alt="Ajala route brief"></div></div>
       </article>
@@ -668,6 +682,33 @@ html[data-theme="dark"] .sw .rocker .face{
     </div>
   </div>
 </section>
+
+<section class="sec" id="record"><div class="wrap">
+  <div class="sec-h reveal"><span class="num">&#9670;</span><span class="eyebrow">On the record</span></div>
+  <h2 class="reveal">I don't just build it. I take it on stage.</h2>
+  <div class="rec reveal">
+    <div>
+      <div class="rstack" id="rstack" role="button" tabindex="0" aria-label="Next photo">
+        <img src="img/tra_stage.jpg" alt="Femi pitching Àjàlá on the Tech Revolution Africa stage" loading="lazy">
+        <img src="img/tra_slide.jpg" alt="Àjàlá pitch slide: navigation with context" loading="lazy">
+        <img src="img/tra_team.jpg" alt="The Àjàlá team in branded shirts at Tech Revolution Africa" loading="lazy">
+      </div>
+      <div class="rcap" id="rcap"></div>
+    </div>
+    <div class="rcopy">
+      <span class="tag ember">Tech Revolution Africa 2.0 · January 2026</span>
+      <h3>Pitching Àjàlá to the judges, live.</h3>
+      <p>I took Àjàlá, the Lagos transit app I designed and built alone, to the Tech Revolution Africa 2.0 stage and pitched it live, with my team in the room wearing the brand.</p>
+      <blockquote>“Where maps end, Àjàlá begins.”</blockquote>
+      <ul>
+        <li>Pitched the live product, not a mockup</li>
+        <li>Showed fare ranges, the conductor's shout and routes picked for budget, speed or safety</li>
+        <li>Same founder who will build and market your project</li>
+      </ul>
+      <div class="plinks"><a href="https://ajala.live" target="_blank" rel="noopener" class="btn fill">See Àjàlá →</a></div>
+    </div>
+  </div>
+</div></section>
 
 <section class="sec" id="services"><div class="wrap">
   <div class="sec-h reveal"><span class="num">01</span><span class="eyebrow">What I build for you</span></div>
@@ -1017,6 +1058,17 @@ armShow(0);
 (function(){var s=document.querySelector('.arphone .pscreen'),sx=0,sy=0,on=false;
  s.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;on=true;},{passive:true});
  s.addEventListener('touchend',function(e){if(!on)return;on=false;var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy))armShow(armi+(dx<0?1:-1));});})();
+
+/* ---- ON THE RECORD: photo stack ---- */
+(function(){var st=document.getElementById('rstack'),imgs=[].slice.call(st.querySelectorAll('img')),k=0,cap=document.getElementById('rcap');
+ var CAPS=['On stage, pitching Àjàlá','The pitch: navigation with context','My team, in the front rows'];
+ function lay(){imgs.forEach(function(im,j){var p=(j-k+imgs.length)%imgs.length;im.className='p'+p;});cap.textContent=CAPS[k]+'  ·  '+(k+1)+'/'+imgs.length;}
+ function next(d){k=(k+(d||1)+imgs.length)%imgs.length;lay();}
+ st.addEventListener('click',function(){next(1);});
+ st.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();next(1);}});
+ var sx=0;st.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+ st.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50){e.preventDefault();next(dx<0?1:-1);}});
+ lay();})();
 
 /* ---- BLENDER ORDERS PER DAY (Ads Manager, R Blender campaign, 26 Oct 2026) ---- */
 var DAYS=[['Sun 19',10,10136],['Mon 20',9,10527],['Tue 21',8,8410],['Wed 22',12,15740],['Thu 23',10,10535],['Fri 24',10,7742],['Sat 25',9,11025]];
