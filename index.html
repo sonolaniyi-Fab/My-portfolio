@@ -301,7 +301,8 @@ html[data-theme="dark"] .rocker .face{box-shadow:inset 0 -12px 13px -9px rgba(0,
 .faq summary::after{content:"+";color:var(--ember);font-size:22px;line-height:1}
 .faq details[open] summary::after{content:"–"}
 .faq details p{color:var(--muted);font-size:14.5px;margin:12px 0 0}
-@media(max-width:900px){.svc,.price{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.stp{border-bottom:2px solid var(--hard)}.stp:nth-child(2){border-right:none}.stp:nth-child(n+3){border-bottom:none}}
+.price.four{grid-template-columns:repeat(4,1fr)}@media(max-width:1180px){.price.four{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){.svc,.price,.price.four{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.stp{border-bottom:2px solid var(--hard)}.stp:nth-child(2){border-right:none}.stp:nth-child(n+3){border-bottom:none}}
 @media(max-width:520px){.steps{grid-template-columns:1fr}.stp{border-right:none;border-bottom:2px solid var(--hard)!important}.stp:last-child{border-bottom:none!important}}
 .wafloat{position:fixed;right:18px;bottom:18px;z-index:80;background:#25D366;color:#fff;border:2px solid var(--hard);border-radius:999px;padding:12px 18px;font-family:var(--mono);font-size:12.5px;font-weight:700;box-shadow:4px 4px 0 var(--hard)}
 .wafloat:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--hard)}
@@ -954,15 +955,18 @@ html[data-theme="dark"] .sw .rocker .face{
   <div class="sec-h reveal"><span class="num">08</span><span class="eyebrow">Pricing</span></div>
   <h2 class="reveal">Clear prices. No surprises.</h2>
   <p class="sub reveal">Every project gets a fixed quote after a free call, so you know the cost before we start. These are starting points.</p>
-  <div class="price">
-    <div class="pc reveal"><h3>Starter site</h3><div class="amt">from ₦150,000</div><p class="for">For businesses that need to be found and trusted online.</p>
-      <ul class="pf"><li>Up to 5 pages, mobile-first</li><li>WhatsApp, call and map buttons</li><li>Contact or enquiry form</li><li>Basic Google setup</li><li>Delivered in about 1 to 2 weeks</li></ul><a href="#contact" class="btn">Get a quote</a></div>
-    <div class="pc pop reveal"><span class="pop-tag">Most chosen</span><h3>Business site or store</h3><div class="amt">from ₦350,000</div><p class="for">For businesses that want orders, bookings or payments online.</p>
-      <ul class="pf"><li>Online store or booking system</li><li>Card and transfer payments</li><li>Admin you can edit yourself</li><li>Speed, SEO and tracking pixel</li><li>30 days of free support after launch</li><li>Delivered in about 2 to 4 weeks</li></ul><a href="#contact" class="btn">Get a quote</a></div>
-    <div class="pc reveal"><h3>Custom app</h3><div class="amt">from ₦1,500,000</div><p class="for">For startups and companies that need their own app.</p>
-      <ul class="pf"><li>Android and iOS from one codebase</li><li>Login, database, maps and push</li><li>Admin dashboard</li><li>Store submission handled</li><li>Built in clear stages with demos</li><li>Scoped after a free call</li></ul><a href="#contact" class="btn">Book a call</a></div>
+  <div class="price four">
+    <div class="pc reveal"><h3>Website revamp</h3><div class="amt">from $850<br><small>≈ ₦1,164,500</small></div><p class="for">For businesses whose current site looks dated.</p>
+      <ul class="pf"><li>A fresh design for your existing site</li><li>Content and photos moved over</li><li>Links and Google rankings kept</li><li>Mobile-first and faster</li><li>Delivered in about 2 to 3 weeks</li></ul><a href="#contact" class="btn">Get a quote</a></div>
+    <div class="pc reveal"><h3>Basic website</h3><div class="amt">from $1,000<br><small>≈ ₦1,370,000</small></div><p class="for">For businesses that need to be found and trusted online.</p>
+      <ul class="pf"><li>Up to 5 pages, mobile-first</li><li>WhatsApp, call and map buttons</li><li>Contact or enquiry form</li><li>Basic Google setup</li><li>Delivered in about 2 weeks</li></ul><a href="#contact" class="btn">Get a quote</a></div>
+    <div class="pc pop reveal"><span class="pop-tag">Most chosen</span><h3>Professional website</h3><div class="amt">from $2,000<br><small>≈ ₦2,740,000</small></div><p class="for">For businesses that want orders, bookings or donations online.</p>
+      <ul class="pf"><li>Up to 10 pages, custom design</li><li>Store, bookings, payments or donations</li><li>Dashboard you can edit yourself</li><li>Speed, SEO and analytics</li><li>30 days of free support after launch</li><li>Delivered in about 3 to 4 weeks</li></ul><a href="#contact" class="btn">Get a quote</a></div>
+    <div class="pc reveal"><h3>Custom app</h3><div class="amt">from $6,000<br><small>≈ ₦8,220,000</small></div><p class="for">For startups and companies that need their own app.</p>
+      <ul class="pf"><li>Android and iOS from one codebase</li><li>Login, database, maps and push</li><li>Admin dashboard</li><li>Store submission handled</li><li>Built in clear stages with demos</li></ul><a href="#contact" class="btn">Book a call</a></div>
   </div>
-  <p class="pnote reveal"><b>Meta ads:</b> tracking and account setup from ₦120,000, and managed campaigns from ₦150,000 a month, plus your ad spend paid directly to Meta.<br>Prices in Nigerian Naira. Foreign clients are quoted in USD. 50% to start, 50% on delivery. Monthly care plans are optional.</p>
+  <p class="pnote reveal"><b>Also:</b> custom interactive websites from $4,500, automation from $500, admin dashboards from $1,500, Meta and Google ads from $300.<br>Prices in US dollars with the naira equivalent at ₦1,370 = $1. Domain and hosting are bought in your name. 50% to start, 50% at launch. Registered nonprofits get 20% off.</p>
+  <div class="reveal" style="text-align:center;margin-top:18px"><a href="femi-abraham-rate-card-2026.pdf" class="btn" target="_blank" rel="noopener">Download the full rate card (PDF)</a></div>
 </div></section>
 
 <section class="sec" id="process"><div class="wrap">
