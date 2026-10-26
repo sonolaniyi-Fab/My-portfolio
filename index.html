@@ -352,7 +352,8 @@ html[data-theme="dark"] .rocker .face{box-shadow:inset 0 -12px 13px -9px rgba(0,
 .rcopy ul{list-style:none;padding:0;margin:0 0 14px;display:flex;flex-direction:column;gap:7px}
 .rcopy li{font-size:14.5px;padding-left:22px;position:relative}
 .rcopy li::before{content:"✓";position:absolute;left:0;color:var(--ember);font-weight:700}
-@media(max-width:760px){.rec{grid-template-columns:1fr;gap:20px}}
+.rec:nth-of-type(odd) .rcopy{order:-1}
+@media(max-width:760px){.rec{grid-template-columns:1fr;gap:20px}.rec:nth-of-type(odd) .rcopy{order:0}}
 .goal{background:var(--panel);border:2px solid var(--hard);border-radius:16px;padding:22px;margin:0 0 26px;box-shadow:8px 8px 0 var(--cobalt)}
 .goal h3{font-family:var(--disp);font-size:22px;margin:8px 0 6px}
 .goaltabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
@@ -685,15 +686,37 @@ html[data-theme="dark"] .sw .rocker .face{
 
 <section class="sec" id="record"><div class="wrap">
   <div class="sec-h reveal"><span class="num">&#9670;</span><span class="eyebrow">On the record</span></div>
-  <h2 class="reveal">I don't just build it. I take it on stage.</h2>
+  <h2 class="reveal">From a UN summit in Doha to the Tech Revolution stage.</h2>
   <div class="rec reveal">
     <div>
-      <div class="rstack" id="rstack" role="button" tabindex="0" aria-label="Next photo">
+      <div class="rstack" role="button" tabindex="0" aria-label="Next summit photo" data-caps="With the Eukalypton team at the summit|At a summit desk, Doha 2025|Working the summit floor|The Solutions Studio stage">
+        <img src="img/un_team.jpg" alt="Femi with the Eukalypton Charity Foundation team at the Second World Summit for Social Development" loading="lazy">
+        <img src="img/un_desk.jpg" alt="Femi at a UN summit desk in Doha" loading="lazy" style="object-position:50% 30%">
+        <img src="img/un_mic.jpg" alt="Femi at the microphone at the UN summit" loading="lazy" style="object-position:50% 35%">
+        <img src="img/un_lounge.jpg" alt="The Eukalypton team on the summit's Solutions Studio stage" loading="lazy" style="object-position:50% 62%">
+      </div>
+      <div class="rcap"></div>
+    </div>
+    <div class="rcopy">
+      <span class="tag cobalt">United Nations · Doha, Qatar · 4 to 6 Nov 2025</span>
+      <h3>At the UN's Second World Summit for Social Development.</h3>
+      <p>I went to Doha as Growth Manager for the Eukalypton Charity Foundation, part of its delegation to the United Nations summit where heads of state, UN agencies and civil society met on poverty, decent work and inclusion.</p>
+      <ul>
+        <li>Three days at the Qatar National Convention Centre with a summit pass</li>
+        <li>Represented the foundation's growth work alongside its team of six</li>
+        <li>Growth is not only for shops: I bring the same thinking to charities and causes</li>
+      </ul>
+      <div class="plinks"><a href="https://social.desa.un.org/world-summit-2025" target="_blank" rel="noopener" class="btn">About the summit →</a></div>
+    </div>
+  </div>
+  <div class="rec reveal" style="margin-top:56px">
+    <div>
+      <div class="rstack" role="button" tabindex="0" aria-label="Next pitch photo" data-caps="On stage, pitching Àjàlá|The pitch: navigation with context|My team, in the front rows">
         <img src="img/tra_stage.jpg" alt="Femi pitching Àjàlá on the Tech Revolution Africa stage" loading="lazy">
         <img src="img/tra_slide.jpg" alt="Àjàlá pitch slide: navigation with context" loading="lazy">
         <img src="img/tra_team.jpg" alt="The Àjàlá team in branded shirts at Tech Revolution Africa" loading="lazy">
       </div>
-      <div class="rcap" id="rcap"></div>
+      <div class="rcap"></div>
     </div>
     <div class="rcopy">
       <span class="tag ember">Tech Revolution Africa 2.0 · January 2026</span>
@@ -1060,15 +1083,15 @@ armShow(0);
  s.addEventListener('touchend',function(e){if(!on)return;on=false;var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy))armShow(armi+(dx<0?1:-1));});})();
 
 /* ---- ON THE RECORD: photo stack ---- */
-(function(){var st=document.getElementById('rstack'),imgs=[].slice.call(st.querySelectorAll('img')),k=0,cap=document.getElementById('rcap');
- var CAPS=['On stage, pitching Àjàlá','The pitch: navigation with context','My team, in the front rows'];
+document.querySelectorAll('.rstack').forEach(function(st){var imgs=[].slice.call(st.querySelectorAll('img')),k=0,cap=st.parentNode.querySelector('.rcap');
+ var CAPS=st.dataset.caps.split('|');
  function lay(){imgs.forEach(function(im,j){var p=(j-k+imgs.length)%imgs.length;im.className='p'+p;});cap.textContent=CAPS[k]+'  ·  '+(k+1)+'/'+imgs.length;}
  function next(d){k=(k+(d||1)+imgs.length)%imgs.length;lay();}
  st.addEventListener('click',function(){next(1);});
  st.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();next(1);}});
  var sx=0;st.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
  st.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50){e.preventDefault();next(dx<0?1:-1);}});
- lay();})();
+ lay();});
 
 /* ---- BLENDER ORDERS PER DAY (Ads Manager, R Blender campaign, 26 Oct 2026) ---- */
 var DAYS=[['Sun 19',10,10136],['Mon 20',9,10527],['Tue 21',8,8410],['Wed 22',12,15740],['Thu 23',10,10535],['Fri 24',10,7742],['Sat 25',9,11025]];
