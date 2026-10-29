@@ -187,8 +187,8 @@ html[data-theme="dark"] .rocker .face{box-shadow:inset 0 -12px 13px -9px rgba(0,
 .arscreen{position:relative;aspect-ratio:5/3;overflow:hidden;background:#f3f3f1;touch-action:pan-y}
 .arscroll{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none}
 .arscroll::-webkit-scrollbar{display:none}
-#arimg,#spotimg,#armimg,#ssimg,#ssmimg{width:100%;display:block}
-#arimg,#ssimg{min-height:100%;object-fit:cover;object-position:top center}
+#arimg,#spotimg,#armimg,#ssimg,#ssmimg,#pgimg,#pgmimg{width:100%;display:block}
+#arimg,#ssimg,#pgimg{min-height:100%;object-fit:cover;object-position:top center}
 .artabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:16px 0 0}
 .artab{font-family:var(--mono);font-size:12px;border:2px solid var(--hard);background:var(--panel);border-radius:999px;padding:8px 14px;cursor:pointer}
 .artab.on{background:var(--cobalt);color:#fff}
@@ -642,7 +642,7 @@ html[data-theme="dark"] .sw .rocker .face{
     <div class="wrap sc-head">
       <div class="sec-h"><span class="num">&#9733;</span><span class="eyebrow">Selected work</span></div>
       <h2>Scroll through what I have shipped.</h2>
-      <p class="sub">A live app, two live stores and a campaign that is running right now. Swipe or scroll sideways.</p>
+      <p class="sub">A live app, three live stores and a campaign that is running right now. Swipe or scroll sideways.</p>
     </div>
     <div class="track" id="track">
       <article class="panel">
@@ -667,8 +667,15 @@ html[data-theme="dark"] .sw .rocker .face{
           <div class="plinks"><a href="https://arese.fit" target="_blank" rel="noopener" class="btn fill">Visit arese.fit</a></div></div>
         <div class="pvis"><div class="bwin big tilt3d"><div class="bbar2"><i></i><i></i><i></i><span>arese.fit</span></div><img data-img="ar_home" alt="arese.fit homepage" loading="lazy"></div></div>
       </article>
+      <article class="panel">
+        <div class="pcopy"><span class="tag cobalt">04 · Client store</span><h3>Pick &amp; Get</h3>
+          <p>A Lagos gadget and home essentials store, built from scratch. Each product has its own sales page with a one-minute order form, pay on delivery across Lagos and WhatsApp support one tap away.</p>
+          <div class="tech"><span>WordPress</span><span>WooCommerce</span><span>Landing pages</span><span>Pay on delivery</span></div>
+          <div class="plinks"><a href="https://pickandget.com.ng" target="_blank" rel="noopener" class="btn fill cobalt">Visit pickandget.com.ng</a></div></div>
+        <div class="pvis"><div class="bwin big tilt3d"><div class="bbar2"><i></i><i></i><i></i><span>pickandget.com.ng</span></div><img src="img/pg_home.webp" alt="Pick and Get homepage" loading="lazy"></div></div>
+      </article>
       <article class="panel pdark">
-        <div class="pcopy"><span class="tag ember"><span class="live" style="display:inline-block;margin-right:6px"></span>04 · Live now</span><h3>Rechargeable blender campaign</h3>
+        <div class="pcopy"><span class="tag ember"><span class="live" style="display:inline-block;margin-right:6px"></span>05 · Live now</span><h3>Rechargeable blender campaign</h3>
           <p>A Meta sales campaign on my Spotshop ad account, running since 1 October 2026. It brings in about 10 orders a day, each one costing under ₦1,000 in ads. Figures as of 26 October 2026.</p>
           <div class="plinks"><a href="#meta" class="btn fill">How I run Meta ads</a></div></div>
         <div class="pvis"><div class="bigtiles">
@@ -808,8 +815,35 @@ html[data-theme="dark"] .sw .rocker .face{
   </div>
 </div></section>
 
+<section class="sec" id="pickandget"><div class="wrap">
+  <div class="sec-h reveal"><span class="num">04</span><span class="eyebrow">Client store · try it</span></div>
+  <h2 class="reveal">Pick &amp; Get, a store built to sell from ads.</h2>
+  <p class="sub reveal">A Lagos gadget and home essentials store I designed and built. Every product has its own sales page: the problem, the product, real photos, how to order, then a short form that takes under a minute. No account and no card. The order lands in WooCommerce, the customer pays on delivery, and WhatsApp is one tap away on every page.</p>
+  <div class="arwrap reveal">
+    <div class="arrow2">
+      <div>
+        <div class="browser arbrowser">
+          <div class="bbar"><i class="r"></i><i class="y"></i><i class="g"></i><span class="u" id="pgurl">pickandget.com.ng</span></div>
+          <div class="arscreen"><div class="arscroll" id="pgscroll"><img id="pgimg" alt="pickandget.com.ng desktop"></div></div>
+        </div>
+        <div class="artabs" id="pgtabs"></div>
+        <div class="arcap">Desktop store</div>
+      </div>
+      <div class="arphonecol">
+        <div class="phone arphone"><div class="pscreen"><div class="pscroll" id="pgmscroll"><img id="pgmimg" alt="pickandget.com.ng mobile"></div></div></div>
+        <div class="artabs" id="pgmtabs"></div>
+        <div class="arcap">Same store, mobile</div>
+      </div>
+    </div>
+    <div class="fmeta reveal" style="max-width:none;text-align:center;margin-top:26px">
+      <div class="tech" style="justify-content:center"><span>WordPress</span><span>WooCommerce</span><span>Product sales pages</span><span>One-minute order form</span><span>Pay on delivery</span><span>Meta Pixel</span></div>
+      <div class="links" style="justify-content:center"><a href="https://pickandget.com.ng" target="_blank" rel="noopener" class="btn fill cobalt">Visit pickandget.com.ng →</a></div>
+    </div>
+  </div>
+</div></section>
+
 <section class="sec"><div class="wrap">
-  <div class="sec-h reveal"><span class="num">04</span><span class="eyebrow">My own store · live</span></div>
+  <div class="sec-h reveal"><span class="num">05</span><span class="eyebrow">My own store · live</span></div>
   <h2 class="reveal">Spotshop NG: my store, my funnels, my ads.</h2>
   <p class="sub reveal">A registered Nigerian e-commerce business that I built and run. New, used and car listings, partner shops, pay on delivery in Lagos, Paystack or bank transfer elsewhere, and every order confirmed on WhatsApp. Behind it I design the product funnels and run the paid acquisition: 100+ Meta &amp; Google campaigns, 1,000+ orders for one product in three months, cost per order kept well below margin.</p>
   <div class="arwrap reveal">
@@ -851,7 +885,7 @@ html[data-theme="dark"] .sw .rocker .face{
 </div></section>
 
 <section class="sec"><div class="wrap">
-  <div class="sec-h reveal"><span class="num">05</span><span class="eyebrow">Paid results · real account</span></div>
+  <div class="sec-h reveal"><span class="num">06</span><span class="eyebrow">Paid results · real account</span></div>
   <h2 class="reveal">About 10 new orders a day, from ads alone.</h2>
   <p class="sub reveal">You do not need to understand Ads Manager to read this. Here is what my ads do for a real business, in plain words, straight from my live Meta account.</p>
   <div class="livead reveal">
@@ -929,7 +963,7 @@ html[data-theme="dark"] .sw .rocker .face{
 </div></section>
 
 <section class="sec"><div class="wrap">
-  <div class="sec-h reveal"><span class="num">06</span><span class="eyebrow">Toolkit</span></div>
+  <div class="sec-h reveal"><span class="num">07</span><span class="eyebrow">Toolkit</span></div>
   <div class="skills">
     <div class="skc e reveal"><h3>Marketing</h3><div class="chipz"><span>Meta Ads</span><span>Google Ads</span><span>Pixel &amp; CAPI</span><span>CBO</span><span>Advantage+</span><span>CRO</span><span>Funnel optimisation</span><span>Audience strategy</span><span>Email</span><span>Analytics</span></div></div>
     <div class="skc c reveal"><h3>Build</h3><div class="chipz"><span>React Native</span><span>Next.js</span><span>WordPress</span><span>WooCommerce</span><span>Elementor</span><span>Supabase</span><span>PostgreSQL / PostGIS</span><span>GitHub</span><span>Vercel</span></div></div>
@@ -938,7 +972,7 @@ html[data-theme="dark"] .sw .rocker .face{
 </div></section>
 
 <section class="sec" id="meta"><div class="wrap">
-  <div class="sec-h reveal"><span class="num">07</span><span class="eyebrow">Meta ads, Facebook and Instagram</span></div>
+  <div class="sec-h reveal"><span class="num">08</span><span class="eyebrow">Meta ads, Facebook and Instagram</span></div>
   <h2 class="reveal">Ads that are set up to be measured, then to make money.</h2>
   <p class="sub reveal">Most ad accounts waste money because tracking is wrong before the first naira is spent. I fix the foundation first, then build campaigns around what an order is worth to you.</p>
   <div class="mads">
@@ -953,7 +987,7 @@ html[data-theme="dark"] .sw .rocker .face{
 </div></section>
 
 <section class="sec" id="pricing"><div class="wrap">
-  <div class="sec-h reveal"><span class="num">08</span><span class="eyebrow">Pricing</span></div>
+  <div class="sec-h reveal"><span class="num">09</span><span class="eyebrow">Pricing</span></div>
   <h2 class="reveal">Clear prices. No surprises.</h2>
   <p class="sub reveal">Every project gets a fixed quote after a free consultation by email, WhatsApp or phone, so you know the cost before we start. These are starting points.</p>
   <div class="price four">
@@ -1189,7 +1223,7 @@ html[data-theme="dark"] .qs{background:#241C40}
 
 
 <section class="sec" id="process"><div class="wrap">
-  <div class="sec-h reveal"><span class="num">09</span><span class="eyebrow">How it works</span></div>
+  <div class="sec-h reveal"><span class="num">10</span><span class="eyebrow">How it works</span></div>
   <h2 class="reveal">From first message to live in four steps.</h2>
   <div class="steps reveal">
     <div class="stp"><span class="no">STEP 01</span><h3>Free consultation</h3><p>You tell me what the business needs. I ask the questions that matter and give you an honest answer, even if that is "you don't need an app".</p></div>
@@ -1200,7 +1234,7 @@ html[data-theme="dark"] .qs{background:#241C40}
 </div></section>
 
 <section class="sec" id="faq"><div class="wrap">
-  <div class="sec-h reveal"><span class="num">10</span><span class="eyebrow">Questions</span></div>
+  <div class="sec-h reveal"><span class="num">11</span><span class="eyebrow">Questions</span></div>
   <h2 class="reveal">Things clients ask me first.</h2>
   <div class="faq reveal">
     <details><summary>How long does a website take?</summary><p>A starter site is usually 1 to 2 weeks. A store or booking system takes 2 to 4 weeks. I give you a date in the quote.</p></details>
@@ -1344,16 +1378,21 @@ goalRender();
 
 /* ---- SPOTSHOP.ORG DESKTOP + MOBILE ---- */
 var SS=[['home','Home','spotshop.org'],['shop','Shop','spotshop.org/shop'],['cars','Cars','spotshop.org/product-category/cars'],['product','Car listing','spotshop.org/product/honda-crosstour-2010'],['guides','Guides','spotshop.org/guides']];
-function ssPair(img,scroll,tabs,fn,mob){var k=0;
- function show(i){k=(i+SS.length)%SS.length;document.getElementById(img).src='img/ss_'+(mob?'m_':'')+SS[k][0]+'.webp';if(!mob)document.getElementById('ssurl').textContent=SS[k][2];document.getElementById(scroll).scrollTop=0;document.querySelectorAll('#'+tabs+' .artab').forEach(function(b,j){b.classList.toggle('on',j===k);});}
+function ssPair(img,scroll,tabs,fn,mob,L,pre,url){L=L||SS;pre=pre||'ss_';url=url||'ssurl';var k=0;
+ function show(i){k=(i+L.length)%L.length;document.getElementById(img).src='img/'+pre+(mob?'m_':'')+L[k][0]+'.webp';if(!mob)document.getElementById(url).textContent=L[k][2];document.getElementById(scroll).scrollTop=0;document.querySelectorAll('#'+tabs+' .artab').forEach(function(b,j){b.classList.toggle('on',j===k);});}
  window[fn]=show;
- document.getElementById(tabs).innerHTML=SS.map(function(p,j){return '<button class="artab" onclick="'+fn+'('+j+')">'+p[1]+'</button>';}).join('');
+ document.getElementById(tabs).innerHTML=L.map(function(p,j){return '<button class="artab" onclick="'+fn+'('+j+')">'+p[1]+'</button>';}).join('');
  show(0);
  var s=document.getElementById(scroll).parentNode,sx=0,sy=0,on=false;
  s.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;on=true;},{passive:true});
  s.addEventListener('touchend',function(e){if(!on)return;on=false;var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy))show(k+(dx<0?1:-1));});}
 ssPair('ssimg','ssscroll','sstabs','ssShow',false);
 ssPair('ssmimg','ssmscroll','ssmtabs','ssmShow',true);
+
+/* ---- PICKANDGET.COM.NG DESKTOP + MOBILE ---- */
+var PG=[['home','Home','pickandget.com.ng'],['product','Product page','pickandget.com.ng/arctic-air-pocket-chill'],['buds','Earbuds page','pickandget.com.ng/2in1-bluetooth-ear-buds'],['about','About','pickandget.com.ng/about-us'],['faqs','FAQs','pickandget.com.ng/faqs']];
+ssPair('pgimg','pgscroll','pgtabs','pgShow',false,PG,'pg_','pgurl');
+ssPair('pgmimg','pgmscroll','pgmtabs','pgmShow',true,PG,'pg_','pgurl');
 
 /* ---- SPOTSHOP FUNNEL PHONE ---- */
 var SP=[['spot_blender','Rechargeable Blender'],['spot_dryer','Foldable Clothes Dryer'],['spot_confirm','Order confirmation']];
@@ -1376,7 +1415,7 @@ function dragScroll(el){
   el.addEventListener('pointerup',end);el.addEventListener('pointerleave',end);
   el.style.cursor='grab';
 }
-['screen','arscroll','armscroll','ssscroll','ssmscroll','spotscroll','webmobscroll'].forEach(function(id){dragScroll(document.getElementById(id));});
+['screen','arscroll','armscroll','ssscroll','ssmscroll','pgscroll','pgmscroll','spotscroll','webmobscroll'].forEach(function(id){dragScroll(document.getElementById(id));});
 
 /* ---- META ADS MANAGER REPLICA ---- */
 var FBADS=[
