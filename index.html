@@ -582,6 +582,29 @@ html[data-theme="dark"] .sw .rocker .face{
   .stage .c1{top:258px}
   .stage .c2{top:344px;right:0;left:auto}
 }
+
+/* Why work with me */
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:34px 0 0}
+.whyc{background:var(--panel);border:2px solid var(--hard);border-radius:16px;padding:24px;box-shadow:5px 5px 0 var(--sun)}
+.whyc .pill{display:block;width:44px;height:18px;border-radius:99px;background:linear-gradient(90deg,var(--ember) 50%,var(--cobalt) 50%);border:2px solid var(--hard)}
+.whyc h3{font-family:var(--disp);font-size:19px;margin:16px 0 8px}
+.whyc p{color:var(--muted);font-size:14px;margin:0}
+.whyq{margin:30px 0 0;font-family:var(--disp);font-weight:700;font-size:clamp(20px,2.6vw,28px);line-height:1.25;max-width:780px}
+.whyq span{background:linear-gradient(transparent 58%,var(--sun) 58%,var(--sun) 92%,transparent 92%)}
+/* Concept case study */
+.cvid{margin:34px 0 0;border:2px solid var(--hard);border-radius:16px;overflow:hidden;background:#141a2c;box-shadow:6px 6px 0 var(--hard)}
+.cvid .bbar{display:flex;align-items:center;gap:7px;padding:10px 14px;background:var(--panel);border-bottom:2px solid var(--hard)}
+.cvid .bbar i{width:11px;height:11px;border-radius:50%;border:1.5px solid var(--hard);display:block}
+.cvid .bbar i:nth-child(1){background:#ff6058}.cvid .bbar i:nth-child(2){background:#ffc02e}.cvid .bbar i:nth-child(3){background:#29ce42}
+.cvid .bbar span{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-left:8px}
+.cvid video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#141a2c}
+.cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:22px 0 0}
+.cgrid div{border:2px solid var(--hard);border-radius:14px;padding:18px;background:var(--panel)}
+.cgrid b{display:block;font-family:var(--disp);font-size:16px;margin:0 0 6px}
+.cgrid span{color:var(--muted);font-size:13.5px}
+.cnote{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin:16px 0 0}
+@media (max-width:900px){.why,.cgrid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.why,.cgrid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -756,6 +779,19 @@ html[data-theme="dark"] .sw .rocker .face{
   </div>
 </div></section>
 
+<section class="sec" id="why"><div class="wrap">
+  <div class="sec-h reveal"><span class="num">&#10038;</span><span class="eyebrow">Why work with me</span></div>
+  <h2 class="reveal">I build things I'm proud to put my name on.</h2>
+  <p class="sub reveal">Plenty of people can build a website. What I bring is the part that doesn't fit in a price list: ideas, care, and the stubbornness to get it right.</p>
+  <div class="why">
+    <div class="whyc reveal"><span class="pill"></span><h3>Creativity first</h3><p>I don't start from a template. Every project gets its own idea, a look, a detail or a feature that makes it feel like yours and nobody else's.</p></div>
+    <div class="whyc reveal"><span class="pill"></span><h3>Ideas you didn't ask for</h3><p>I keep thinking about your project long after we talk. My best ideas show up in the shower or while I'm washing my car, and I bring them back to you.</p></div>
+    <div class="whyc reveal"><span class="pill"></span><h3>Obsessed with the details</h3><p>Spacing, wording, how a button feels on a cheap phone. I keep going until it's right, not just until it's done.</p></div>
+    <div class="whyc reveal"><span class="pill"></span><h3>Genuinely invested</h3><p>Your project isn't just a job to close. I want it to work for your business and to be something we're both proud of.</p></div>
+  </div>
+  <p class="whyq reveal">If it isn't something I'd proudly show my next client, <span>it isn't finished.</span></p>
+</div></section>
+
 <section class="sec" id="try"><div class="wrap">
   <div class="sec-h reveal"><span class="num">02</span><span class="eyebrow">Featured app · try it</span></div>
   <h2 class="reveal">Àjàlá, running right here.</h2>
@@ -882,6 +918,26 @@ html[data-theme="dark"] .sw .rocker .face{
       <div class="note">Every screen here is a live product funnel I designed and drove paid traffic to — not a mockup.</div>
     </div>
   </div>
+</div></section>
+
+<section class="sec" id="concept"><div class="wrap">
+  <div class="sec-h reveal"><span class="num">&#10022;</span><span class="eyebrow">Concept project · self-initiated</span></div>
+  <h2 class="reveal">Second Dose: a website and partner portal for a medicine-donation nonprofit.</h2>
+  <p class="sub reveal">A concept I designed on my own initiative. It was not commissioned and is not a live site. The brief I set: make donating medicine feel simple, give partner clinics their own login to see stock and request it, help the site get found on Google, and cut the menu down to what people actually need.</p>
+  <div class="cvid reveal">
+    <div class="bbar"><i></i><i></i><i></i><span>Second Dose · concept walkthrough</span></div>
+    <video src="video/second-dose-concept.mp4" poster="video/second-dose-concept-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Walkthrough of the Second Dose concept: homepage, menu, partner login, inventory, search page and mobile"></video>
+  </div>
+  <div class="cgrid">
+    <div class="reveal"><b>Motion with meaning</b><span>A heartbeat line that draws across the page, 3D pill buttons and drifting capsules, kept calm enough for a health charity.</span></div>
+    <div class="reveal"><b>Partner portal</b><span>Separate logins for each clinic, searchable stock with expiry dates, request lists and an admin screen for the team.</span></div>
+    <div class="reveal"><b>Six-section menu</b><span>Donate, get help and partner login are one click from any page, on desktop and phone.</span></div>
+    <div class="reveal"><b>Built to be found</b><span>Page structure, titles, FAQ and "how to donate" pages planned for search from the start.</span></div>
+  </div>
+  <div class="fmeta reveal" style="max-width:none;margin-top:18px">
+    <div class="tech"><span>Concept, not live</span><span>UI design</span><span>Motion</span><span>Partner portal</span><span>SEO structure</span><span>Mobile first</span></div>
+  </div>
+  <p class="cnote reveal">Second Dose, its partner clinics and all inventory figures are fictional.</p>
 </div></section>
 
 <section class="sec"><div class="wrap">
